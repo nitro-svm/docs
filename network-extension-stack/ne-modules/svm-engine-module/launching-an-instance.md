@@ -2,7 +2,10 @@
 
 Please reach out to launch an SVM Engine instance, request an API key from the team, and start sending JSON RPC requests.
 
-The two main endpoints that are available are for retrieving account information and sending SVM transactions.
+The two main endpoints that are available are for:
+
+* Retrieving account information
+* Sending SVM transactions
 
 #### Get Account Info
 
@@ -30,7 +33,7 @@ The two main endpoints that are available are for retrieving account information
 
 <summary>Sample Client Code</summary>
 
-Use the following Rust snippet as a guide for interacting with the server.
+Use the following Rust snippet as a guide for interacting with the server:
 
 {% code title="main.rs" %}
 ```rust

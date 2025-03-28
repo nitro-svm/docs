@@ -6,18 +6,4 @@ One common misconception is that Solana doesn’t need L2s when in fact the ecos
 
 <figure><img src="../.gitbook/assets/34r.png" alt=""><figcaption></figcaption></figure>
 
-### Rollups
-
-A rollup executes transactions off-chain but submits state summaries and fault proofs to Solana for verification and settlement. This allows the rollup’s state to be challenged to prevent fraudulent behavior from the sequencer. Rollups are used by projects like Zeta’s Bullet L2 to run its perpetuals DEX and leverage Solana as a data availability and settlement layer. Despite their advantages, rollups can fragment state as they create parallel execution environments.
-
-### **Batchers**
-
-Similar to a rollup, a batcher consolidates transactions off-chain. However, unlike a rollup, a batcher does not submit the resulting summary to Solana—instead, it executes the net movements on there directly. Although execution occurs after a delay, the final state on L1 is eventually consistent with that of the batcher. This design anchors the source of truth and security to Solana itself.
-
-Projects like Code, the P2P payments network, and Cube, the hybrid CEX/DEX, use a batcher to aggregate transactions off-chain then execute them on-chain so that a user's funds are always on the L1.
-
-### **Appchains and SPEs**
-
-An appchain or Solana Permissioned Environment (SPE) is an independent network that runs Solana code but operates with its own security and trust assumptions. As the name suggests, SPEs have a restricted validator set, which provides a controlled environment.
-
-Pyth, the oracle network, along with several tradFi and RWA projects all utilize SPEs to power their applications. While suitable for specific use cases, SPEs and appchains operate outside Solana’s unified state, which can be an advantage or a limitation depending on the desired design.
+<table><thead><tr><th width="144.46087646484375">Type</th><th width="226.7747802734375">How It Works</th><th>Tradeoffs</th><th>Examples</th></tr></thead><tbody><tr><td><strong>Rollups</strong></td><td>Executes transactions off-chain and sends state summaries to Solana, secured by fault proofs</td><td>Can fragment state &#x26; liquidity</td><td>Zeta’s <strong>Bullet</strong> L2 (perpetuals DEX)</td></tr><tr><td><strong>Batchers</strong></td><td>Combines transactions off-chain and re-executes the net transactions on Solana</td><td>Adds delay before execution</td><td><strong>Code</strong> (P2P payments), <br><strong>Cube</strong> (hybrid CEX/DEX)</td></tr><tr><td><strong>Appchains</strong> / <strong>SPEs</strong></td><td>Uses its own validator set and operates independently from Solana mainnet</td><td>Separate trust model &#x26; liquidity</td><td><strong>Pyth</strong> (oracle network), <strong>Spherenet</strong> (merchant payments)</td></tr></tbody></table>

@@ -1,9 +1,9 @@
 # Table of contents
 
-## Get Started
+## Overview
 
-* [Summary](README.md)
-* [Quickstart](get-started/quickstart.md)
+* [Introduction](README.md)
+* [Quickstart](overview/quickstart.md)
 
 ## Solana Primer
 
@@ -13,7 +13,7 @@
 
 ## Network Extension Stack
 
-* [Introductory Overview](network-extension-stack/introductory-overview.md)
+* [Overview](network-extension-stack/overview.md)
 * [FAQs](network-extension-stack/faqs.md)
 * [NE Modules](network-extension-stack/ne-modules/README.md)
   * [SVM Engine Module](network-extension-stack/ne-modules/svm-engine-module/README.md)

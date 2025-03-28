@@ -1,9 +1,13 @@
 # SVM Engine Module
 
-In the context of scaling solutions, execution layers are responsible for processing transactions computing state updates. While Solana’s architecture offers high throughput and parallel execution, some applications require greater performance guarantees and isolation to avoid shared resource bottlenecks. For instance, high-frequency trading platforms and data-intensive applications need consistent transaction finality and low latency, which can be difficult to achieve in a global execution environment during periods of peak demand.
+The SVM Engine runs a dedicated execution environment for faster and more predictable transaction processing.
+
+While Solana’s architecture enables high throughput and parallel execution, certain applications like [**HFT** (high-frequency trading)](#user-content-fn-1)[^1] and **data-heavy platforms** require guaranteed low latency and consistent finality. These requirements can be difficult to meet during peak demand in a global execution environment.
 
 <figure><img src="../../../.gitbook/assets/5.png" alt=""><figcaption></figcaption></figure>
 
-Traditional solutions like rollups address these challenges by moving computation off-chain and submitting proofs back to Layer 1. However, this introduces additional complexity, delays settlement finality, and fragments liquidity. The **SVM Engine module** takes a different approach by operating natively within Solana’s architecture. It enables developers to create **customized execution environments** that retain Solana’s unified liquidity, composability, and Layer 1 security while isolating specific workloads to achieve consistent performance.
+Traditionally, rollups addressed these challenges by moving computation off-chain and submitting proofs back to the L1, but this introduced additional complexity, delayed settlement, and fragmented liquidity. The **SVM Engine module** takes a different approach by enabling developers to create isolated **execution environments** that remain composable within Solana and its liquidity, while providing greater control over resource allocation.
 
-This is particularly valuable for use cases like high frequency trading and permissioned environments, where custom execution logic and resource allocation are critical for scalability. The SVM Engine module allows developers to achieve rollup-like performance benefits without requiring off-chain proofs, separate settlement layers, or fragmented ecosystems.
+This is particularly valuable for **HFT**, **DeFi**, and **permissioned environments**, where custom execution logic and resource allocation are critical for scalability. The SVM Engine module allows developers to achieve rollup-like performance benefits without requiring off-chain proofs, separate settlement layers, or fragmented ecosystems.
+
+[^1]: A trading method that rapidly processes orders to capitalize on small price changes.
