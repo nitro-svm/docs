@@ -8,13 +8,11 @@ You can use the Data Module's CLI tool to post data on-chain and retrieve it fro
 
 To interact with on-chain programs, set up Solana CLI:
 
-* Install `solana-cli` by following the [official documentation.](https://solana.com/docs/intro/installation)
-* Configure `solana-cli` to use your preferred RPC and network e.g.`solana config set --url https://api.devnet.solana.com` to use Solana devnet.
+* Install `solana-cli` by following the [official documentation](https://solana.com/docs/intro/installation).
+* Configure `solana-cli` to use your preferred RPC and network e.g.`solana config set --url https://api.devnet.solana.com` for devnet.
 
 {% hint style="info" %}
-We do recommend not recommend using public RPC nodes for production use cases because of their low rate limits and low stake, which makes transactions land more slowly on Solana.
-
-Please reach out if you'd like help in setting up a private RPC.
+We do recommend not recommend using public RPC nodes for production because of their low rate limits and low stake, which makes transaction landing much slower than private RPC nodes. Please reach out if you'd like help in setting up a private endpoint.
 {% endhint %}
 
 Once that's complete, set up the Data Module CLI:

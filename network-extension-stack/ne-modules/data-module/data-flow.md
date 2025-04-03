@@ -12,7 +12,9 @@ It’s easy to check the presence or absence of any data element by submitting a
 
 #### Glossary
 
-* Namespace: describes a data collection, dependent on the domain e.g. Alice’s rollup, Bob’s rewards.
-* Blober: responsible for generating Merkle proofs over incoming data and is unique to each namespace.
-* Blob: describes each logical unit within a data collection e.g. Alice’s rollup has a blob for every rollup block.
-* Chunk: blob may be split into chunks to be uploaded to Solana so that each transaction stays within size limits. (Internal implementation detail, irrelevant for the end user.)
+| Term      | Definition                                                                                                                         | Notes                                                         |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| Namespace | A single data collection, dependent on the domain                                                                                  | e.g. Alice’s rollup, Bob’s rewards                            |
+| Blober    | Generates Merkle proofs over incoming data and is unique to each namespace                                                         |                                                               |
+| Blob      | Each logical unit within a namespace or data collection                                                                            | e.g. Alice’s rollup has a blob for every rollup block         |
+| Chunk     | A blob may be split into multiple chunks as part of the upload process to Solana so that each transaction stays within size limits | (Internal implementation detail, irrelevant for the end user) |
