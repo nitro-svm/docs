@@ -22,7 +22,9 @@
   * [zkSVM Prover Module](network-extension-stack/ne-modules/zksvm-prover-module/README.md)
     * [Prover Mechanics](network-extension-stack/ne-modules/zksvm-prover-module/prover-mechanics.md)
     * [Leveraging the zkSVM](network-extension-stack/ne-modules/zksvm-prover-module/leveraging-the-zksvm.md)
-  * [Data Module](network-extension-stack/ne-modules/data-module.md)
+  * [Data Module](network-extension-stack/ne-modules/data-module/README.md)
+    * [Data Flow](network-extension-stack/ne-modules/data-module/data-flow.md)
+    * [Using the Data Module](network-extension-stack/ne-modules/data-module/using-the-data-module.md)
 * [Rollups](network-extension-stack/rollups.md)
 
 ## Socials
