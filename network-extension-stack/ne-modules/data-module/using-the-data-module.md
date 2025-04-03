@@ -12,7 +12,7 @@ To interact with on-chain programs, set up Solana CLI:
 * Configure `solana-cli` to use your preferred RPC and network e.g.`solana config set --url https://api.devnet.solana.com` for devnet.
 
 {% hint style="info" %}
-We do recommend not recommend using public RPC nodes for production because of their low rate limits and low stake, which makes transaction landing much slower than private RPC nodes. Please reach out if you'd like help in setting up a private endpoint.
+We do not recommend using public RPC nodes for production because of their low rate limits and low stake, which makes transaction landing much slower than private RPC nodes. Please reach out if you'd like help in setting up a private endpoint.
 {% endhint %}
 
 Once that's complete, set up the Data Module CLI:
