@@ -31,7 +31,7 @@ Make sure to use the correct program ID for mainnet and devnet:
 
 | Network        | Program ID                                   |
 | -------------- | -------------------------------------------- |
-| Solana Mainnet | 8xAuVgAygVN2sPXJzycT7AU7c9ZUJkG357HonxdFXjyc |
+| Solana Mainnet | 9i2MEc7s38jLGoEkbFszuTJCL1w3Uorg7qjPjfN8Tv5Z |
 | Solana Devnet  | 2RWsr92iL39YCLiZu7dZ5hron4oexEMbgWDg35v5U5tH |
 {% endstep %}
 
