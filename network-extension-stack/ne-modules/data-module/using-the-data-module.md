@@ -30,14 +30,14 @@ nitro-da-client = "0.1.x"
 {% endtab %}
 
 {% tab title="CLI Utility" %}
-* Install `solana-cli` by following the [official documentation](https://solana.com/docs/intro/installation)
+* Install `solana-cli` by following the [official documentation](https://solana.com/docs/intro/installation).
 
 ```sh
 curl --proto '=https' --tlsv1.2 -sSfL https://solana-install.solana.workers.dev | bash
 ```
 
 * Configure `solana-cli` to use your preferred RPC and network e.g.`solana config set --url https://api.devnet.solana.com` for devnet.
-* Download `nitro-da-cli`:
+* Download `nitro-da-cli` .
 
 ```bash
 curl -sSf https://nitro-da-cli.termina.technology/install.sh | sh
