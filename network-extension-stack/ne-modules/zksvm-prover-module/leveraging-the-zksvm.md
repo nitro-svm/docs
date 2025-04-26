@@ -10,13 +10,13 @@ The high-level flow is to start the session, send requests containing SVM transa
 {% step %}
 #### Install Rust Dependencies (Optional)
 
-If using the zkSVM Rust client, install the necessary crates.
+If using the zkSVM Rust client, install the latest version of the necessary crates.
 
 {% code title="Cargo.toml" %}
 ```toml
 [dependencies]
-zksvm-api-types = "0.1.0-alpha"
-zksvm-client = "0.1.0-alpha"
+zksvm-api-types = "0.1.x"
+zksvm-client = "0.1.x"
 ```
 {% endcode %}
 {% endstep %}

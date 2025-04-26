@@ -12,24 +12,36 @@ We do not recommend using public RPC nodes for production because of their low r
 
 {% tabs %}
 {% tab title="Rust SDK" %}
-```sh
-cargo add nitro-da-client
+Install it directly:
+
+<pre class="language-sh"><code class="lang-sh"><strong>cargo add nitro-da-client
+</strong></code></pre>
+
+Or add the latest version in your Cargo.toml:
+
+{% code title="Cargo.toml" %}
+```toml
+[dependencies]
+nitro-da-client = "0.1.x"
 ```
+{% endcode %}
 {% endtab %}
 
 {% tab title="CLI Utility" %}
-To interact with on-chain programs, set up Solana CLI:
+* Install `solana-cli` by following the [official documentation](https://solana.com/docs/intro/installation)
 
-* Install `solana-cli` by following the [official documentation](https://solana.com/docs/intro/installation).
+```sh
+curl --proto '=https' --tlsv1.2 -sSfL https://solana-install.solana.workers.dev | bash
+```
+
 * Configure `solana-cli` to use your preferred RPC and network e.g.`solana config set --url https://api.devnet.solana.com` for devnet.
-
-Once that's complete, set up the Data Module CLI:
+* Download `nitro-da-cli`:
 
 ```bash
 curl -sSf https://nitro-da-cli.termina.technology/install.sh | sh
 ```
 
-Run `nitro-da-cli` to see all the available commands and their options.
+* Run `nitro-da-cli` to see all the available commands and their options.
 {% endtab %}
 {% endtabs %}
 {% endstep %}
