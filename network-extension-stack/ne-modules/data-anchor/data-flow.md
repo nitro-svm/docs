@@ -4,11 +4,13 @@
 
 <figure><img src="../../../.gitbook/assets/Termina Diagrams (5) (2).png" alt=""><figcaption></figcaption></figure>
 
-The data module leverages a modified version of state compression.
+The data anchor leverages a modified version of state compression.
 
 For each dataset, the module hashes individual elements and generates a commitment over the whole set. This commitment is saved in Solana’s accounts space, while a compressed form of the original data is stored in Solana’s ledger history. If longer term storage is needed beyond the ledger’s short lifespan of a few days, the module supports external storage providers such as IPFS, Light Protocol’s archival nodes, or self-hosted cloud databases.
 
 It’s easy to check the presence or absence of any data element by submitting a Merkle proof on-chain. The data is temporary and can be removed after a specified period or event, e.g. X time has elapsed or Y event has occurred, which puts a maximum time bound on the elements. Since Solana requires rent for accounts, removing outdated data allows rent to be reclaimed and prevents the lock-up of increasing amounts of capital over time.
+
+<table><thead><tr><th width="241.224609375">RPC Endpoint </th><th width="234.673828125">Data Bandwidth (KB/s)</th><th>Cost per MB (lamports)</th></tr></thead><tbody><tr><td><strong>devnet</strong></td><td>80.2</td><td>6M</td></tr><tr><td><strong>mainnet</strong></td><td>145</td><td>6M</td></tr><tr><td><strong>mainnet-staked</strong></td><td>150</td><td>6M</td></tr></tbody></table>
 
 #### Glossary
 

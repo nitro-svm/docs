@@ -1,6 +1,6 @@
-# Using the Data Module
+# Using the Data Anchor
 
-You can use the Data Module's Rust client or CLI tool to post data on-chain and retrieve it from the ledger or our indexer service.
+You can use the Data Anchor's Rust client or CLI tool to post data on-chain and retrieve it from the ledger or our indexer service.
 
 {% hint style="info" %}
 We do not recommend using public RPC nodes for production because of their low rate limits and low stake, which makes transaction landing slower than private RPC nodes. Please reach out if you'd like help in setting up a private endpoint.

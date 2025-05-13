@@ -18,11 +18,13 @@ In terms of high-level benchmarks, 100 iterations of a 3-instruction SOL transac
 
 <figure><img src="../../../.gitbook/assets/Termina Diagrams.png" alt=""><figcaption></figcaption></figure>
 
-| Metrics (Per Block)                             | SVM    | Base  | OP Mainnet |
-| ----------------------------------------------- | ------ | ----- | ---------- |
-| Transaction Count                               | 100    | 100   | 16         |
-| Cycle Count                                     | 7,000M | 840M  | 280M       |
-| Proving Time (Succinct’s Public Prover Network) | 2300s  | 280s  | 90s        |
-| Dollar Cost                                     | $5.32  | $0.64 | $0.21      |
+| Metrics (Per Block) | SVM           | Base  | OP Mainnet |
+| ------------------- | ------------- | ----- | ---------- |
+| Transaction Count   | 100           | 100   | 16         |
+| Cycle Count         | 3B            | 840M  | 280M       |
+| Proving Time        | 130s (900s)   | 280s  | 90s        |
+| Dollar Cost         | $0.95 ($0.80) | $0.64 | $0.21      |
 
-On Succinct’s Prover Network, it takes less than an hour and only around five USD to generate a core proof for a block of 100 complex SPL transactions. In addition, these values are rapidly changing as both prover hardware and software are making significant leaps in latency and cost.
+On Succinct’s Prover Network, generating a core proof for a block of 100 complex SPL transactions only takes a few minutes and costs less than a dollar. You have the option to prioritize for proving time or dollar cost.
+
+In addition, these values are rapidly changing as both prover hardware and software are making significant leaps in latency and cost.
