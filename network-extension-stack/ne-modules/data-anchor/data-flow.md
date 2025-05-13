@@ -14,7 +14,7 @@ To help teams plan their integration, here’s a snapshot of current upload perf
 
 <table><thead><tr><th width="241.224609375">RPC Endpoint </th><th width="234.673828125">Data Bandwidth (KB/s)</th><th>Cost per MB (lamports)</th></tr></thead><tbody><tr><td><strong>devnet</strong></td><td>80.2</td><td>6M</td></tr><tr><td><strong>mainnet</strong></td><td>145</td><td>6M</td></tr><tr><td><strong>mainnet-staked</strong></td><td>150</td><td>6M</td></tr></tbody></table>
 
-Uploads are priced at a flat 6 lamports per byte, with no change based on priority fees or network congestion.
+Uploads are priced at a flat 6 million lamports per byte, with no change based on priority fees or network congestion.
 
 ***
 
