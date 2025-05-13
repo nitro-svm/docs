@@ -10,7 +10,13 @@ For each dataset, the module hashes individual elements and generates a commitme
 
 It’s easy to check the presence or absence of any data element by submitting a Merkle proof on-chain. The data is temporary and can be removed after a specified period or event, e.g. X time has elapsed or Y event has occurred, which puts a maximum time bound on the elements. Since Solana requires rent for accounts, removing outdated data allows rent to be reclaimed and prevents the lock-up of increasing amounts of capital over time.
 
+To help teams plan their integration, here’s a snapshot of current upload performance and cost across supported Solana RPCs:
+
 <table><thead><tr><th width="241.224609375">RPC Endpoint </th><th width="234.673828125">Data Bandwidth (KB/s)</th><th>Cost per MB (lamports)</th></tr></thead><tbody><tr><td><strong>devnet</strong></td><td>80.2</td><td>6M</td></tr><tr><td><strong>mainnet</strong></td><td>145</td><td>6M</td></tr><tr><td><strong>mainnet-staked</strong></td><td>150</td><td>6M</td></tr></tbody></table>
+
+Uploads are priced at a flat 6 lamports per byte, with no change based on priority fees or network congestion.
+
+***
 
 #### Glossary
 
