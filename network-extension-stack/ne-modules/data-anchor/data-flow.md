@@ -12,9 +12,9 @@ It’s easy to check the presence or absence of any data element by submitting a
 
 To help teams plan their integration, here’s a snapshot of current upload performance and cost across supported Solana RPCs:
 
-<table><thead><tr><th width="241.224609375">RPC Endpoint </th><th width="234.673828125">Data Bandwidth (KB/s)</th><th>Cost per MB (lamports)</th></tr></thead><tbody><tr><td><strong>devnet</strong></td><td>80.2</td><td>6M</td></tr><tr><td><strong>mainnet</strong></td><td>145</td><td>6M</td></tr><tr><td><strong>mainnet-staked</strong></td><td>150</td><td>6M</td></tr></tbody></table>
+<table><thead><tr><th width="120.11004638671875">RPC Endpoint </th><th width="173.98101806640625">Data Bandwidth (KB/s)</th><th width="227.848876953125">Cost per GB directly on Solana L1 ($SO)</th><th>Constant with DA ($SOL)</th></tr></thead><tbody><tr><td><strong>devnet</strong></td><td>80.2</td><td>7K</td><td>0.001</td></tr><tr><td><strong>mainnet</strong></td><td>145</td><td>7K</td><td>0.001</td></tr><tr><td><strong>mainnet-staked</strong></td><td>150</td><td>7K</td><td>0.001</td></tr></tbody></table>
 
-Uploads are priced at a flat 6 million lamports per byte, with no change based on priority fees or network congestion.
+To achieve 100 KB/s, uploads are priced at a flat 6 million lamports per megabyte, with no change based on priority fees or network congestion.
 
 ***
 
