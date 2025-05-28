@@ -1,6 +1,6 @@
 # Data Anchor
 
-<figure><img src="../../../.gitbook/assets/7.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/DA.png" alt=""><figcaption></figcaption></figure>
 
 In the context of a rollup, the Data Anchor is responsible for the storage of transaction batches. To minimize the on-chain footprint and rent cost, this data needs to be packed, compressed, and stored efficiently in the cheap ledger history and only commitments can be retained in the expensive accounts space. However, the Data Anchor isn’t limited to transaction storage—it can manage arbitrary data, such as raw data points and proofs of computation or availability.
 
