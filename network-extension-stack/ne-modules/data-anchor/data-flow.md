@@ -2,7 +2,7 @@
 
 #### Under the Hood
 
-<figure><img src="../../../.gitbook/assets/Termina Diagrams (5) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Termina Diagrams.png" alt=""><figcaption></figcaption></figure>
 
 The Data Anchor leverages a modified version of state compression.
 

@@ -1,10 +1,8 @@
-# SVM Engine Module
+# SVM Engine
 
 The SVM Engine runs a dedicated execution environment for faster and more predictable transaction processing.
 
 While Solana’s architecture enables high throughput and parallel execution, certain applications like [**HFT** (high-frequency trading)](#user-content-fn-1)[^1] and **data-heavy platforms** require guaranteed low latency and consistent finality. These requirements can be difficult to meet during peak demand in a global execution environment.
-
-<figure><img src="../../../.gitbook/assets/5.png" alt=""><figcaption></figcaption></figure>
 
 Traditionally, rollups addressed these challenges by moving computation off-chain and submitting proofs back to the L1, but this introduced additional complexity, delayed settlement, and fragmented liquidity. The **SVM Engine module** takes a different approach by enabling developers to create isolated **execution environments** that remain composable within Solana and its liquidity, while providing greater control over resource allocation.
 

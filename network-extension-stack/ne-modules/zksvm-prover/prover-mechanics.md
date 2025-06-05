@@ -16,7 +16,7 @@ For additional information on the challenges above, please see this technical [b
 
 In terms of high-level benchmarks, 100 iterations of a 3-instruction SOL transaction take 2B cycles to prove while 100 iterations of an 8-instruction SPL transaction take 7B cycles. The average size of a Solana transaction on mainnet is around 4 instructions, which sits between the instruction counts that were tested in the two  benchmarks.
 
-<figure><img src="../../../.gitbook/assets/Termina Diagrams.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Termina Diagrams (2).png" alt=""><figcaption></figcaption></figure>
 
 | Metrics (Per Block) | SVM           | Base  | OP Mainnet |
 | ------------------- | ------------- | ----- | ---------- |

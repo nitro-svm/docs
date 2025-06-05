@@ -3,7 +3,9 @@
 You can use the Data Anchor's Rust client or CLI tool to post data on-chain and retrieve it from the ledger or our indexer service.
 
 {% hint style="info" %}
-We do not recommend using public RPC nodes for production because of their low rate limits and low stake, which makes transaction landing slower than private RPC nodes. Please reach out if you'd like help in setting up a private endpoint.
+We do not recommend using public RPC nodes for production because of their low rate limits and low stake, which makes transaction landing slower than private RPC nodes.&#x20;
+
+Please reach out if you'd like help in setting up a private endpoint.
 {% endhint %}
 
 {% stepper %}
@@ -16,7 +18,7 @@ If your codebase is in Rust, please use the Rust client. Otherwise, we also prov
 {% tab title="Rust SDK" %}
 Install it directly:
 
-<pre class="language-sh"><code class="lang-sh"><strong>cargo add nitro-da-client
+<pre class="language-sh"><code class="lang-sh"><strong>cargo add data-anchor-client
 </strong></code></pre>
 
 Or add the latest version in your Cargo.toml:
@@ -24,7 +26,7 @@ Or add the latest version in your Cargo.toml:
 {% code title="Cargo.toml" %}
 ```toml
 [dependencies]
-nitro-da-client = "0.1.x"
+data-anchor-client = "0.1.x"
 ```
 {% endcode %}
 {% endtab %}
@@ -37,13 +39,13 @@ curl --proto '=https' --tlsv1.2 -sSfL https://solana-install.solana.workers.dev 
 ```
 
 * Configure `solana-cli` to use your preferred RPC and network e.g.`solana config set --url https://api.devnet.solana.com` for devnet.
-* Download `nitro-da-cli` .
+* Download `data-anchor`.
 
 ```bash
-curl -sSf https://nitro-da-cli.termina.technology/install.sh | sh
+curl -sSf https://data-anchor.termina.technology/install.sh | sh
 ```
 
-* Run `nitro-da-cli` to see all the available commands and their options.
+* Run `data-anchor` to see all the available commands and their options.
 {% endtab %}
 {% endtabs %}
 {% endstep %}
@@ -84,7 +86,7 @@ let blober_client = BloberClient::builder()
 
 {% tab title="CLI Utility" %}
 ```bash
-nitro-da-cli \
+data-anchor \
     --program-id "2RWsr92iL39YCLiZu7dZ5hron4oexEMbgWDg35v5U5tH" \
     --namespace "nitro" \
     blober initialize
@@ -95,7 +97,7 @@ nitro-da-cli \
 If you no longer need the data commitment, close the namespace and reclaim the rent from the on-chain account:
 
 ```bash
-nitro-da-cli \
+data-anchor \
     --program-id "2RWsr92iL39YCLiZu7dZ5hron4oexEMbgWDg35v5U5tH" \
     --namespace "nitro" \
     blober close
@@ -123,7 +125,7 @@ let transaction_outcomes = blober_client
 
 {% tab title="CLI Utility" %}
 ```bash
-nitro-da-cli \
+data-anchor \
     --program-id "2RWsr92iL39YCLiZu7dZ5hron4oexEMbgWDg35v5U5tH" \
     --namespace "nitro" \
     blob upload \
@@ -133,11 +135,11 @@ nitro-da-cli \
 Alternatively, you can directly pipe the data into the command or pass it in as a hex string via the `--data` param:
 
 ```bash
-cat "./data.txt" | nitro-da-cli --program-id "2RWsr92iL39YCLiZu7dZ5hron4oexEMbgWDg35v5U5tH" --namespace "nitro" blob upload
+cat "./data.txt" | data-anchor --program-id "2RWsr92iL39YCLiZu7dZ5hron4oexEMbgWDg35v5U5tH" --namespace "nitro" blob upload
 ```
 
 ```bash
-nitro-da-cli \
+data-anchor \
     --program-id "2RWsr92iL39YCLiZu7dZ5hron4oexEMbgWDg35v5U5tH" \
     --namespace "nitro" \
     blob upload \
@@ -176,7 +178,7 @@ let blobs = blober_client
 
 {% tab title="CLI Utility" %}
 ```bash
-nitro-da-cli \
+data-anchor \
     --program-id "2RWsr92iL39YCLiZu7dZ5hron4oexEMbgWDg35v5U5tH" \
     --namespace "nitro" \
     blob fetch 2Vkwid2ZTman9zvGq2Tp7P2S5CUWJ2fsZSQzGzaoFkDMAgS9xNccCvNe7PJuHrXNotsVu3BoJAsRa9jdfbZraXvS faRmYWXPQUDJcFpqffJVE49f5aMSCLYnqp1xH3DZc3SM2Uayc7jReRfR6LjNkFxeuviSJTXMTtSAmAL9tAppwyK 5XsiKe95nk9GmkceXQkEWapAuAcEQFFYEqMfh5kyeszSxjXepSyDbgzEXmzoQniWMdWvv6mVm5Qbyh9e1i8hHF7K 2nk2Fj2xwM7oRfsqbmDBNqYwPCLGxHcGUujBo7napJgavMSWFEQ6C9wYmLCkKcuaetBs89vtMbtYzEKaKLKjasKd 43zzTdgoZBR3sDphuPQTZQHZdT4Ms976bRiY8jguHPZbNPibY3k4EVnrRGKCbUy97i1RzsdMRXkYyv2KJZp9MQZE
@@ -209,7 +211,7 @@ let blobs = blober_client
 
 {% tab title="CLI Utility" %}
 ```bash
-nitro-da-cli \
+data-anchor \
     --program-id "2RWsr92iL39YCLiZu7dZ5hron4oexEMbgWDg35v5U5tH" \
     --namespace "nitro" \
     --indexer-url "wss://your-indexer.deployment" \
@@ -233,7 +235,7 @@ let proof = blober_client
 
 {% tab title="CLI Utility" %}
 ```bash
-nitro-da-cli \
+data-anchor \
     --program-id "2RWsr92iL39YCLiZu7dZ5hron4oexEMbgWDg35v5U5tH" \
     --namespace "nitro" \
     --indexer-url "wss://your-indexer.deployment" \
