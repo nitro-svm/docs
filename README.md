@@ -9,7 +9,7 @@ Termina is a [**Network Extension**](#user-content-fn-1)[^1] **(NE) platform** t
 
 The design goal of the platform is to enable performance and customization while preserving liquidity and ensuring a seamless user experience. It's a new way to scale your app within Solana.
 
-<figure><img src=".gitbook/assets/Termina Diagrams (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/Termina Banners.png" alt=""><figcaption></figcaption></figure>
 
 [^1]: A component that adds new capabilities to an existing blockchain without creating a separate network.
 
