@@ -1,8 +1,3 @@
----
-cover: .gitbook/assets/discord.jpg
-coverY: 0
----
-
 # Introduction
 
 Termina is a [**Network Extension**](#user-content-fn-1)[^1] **(NE) platform** that integrates Solana applications with **NE** [**modules**](#user-content-fn-2)[^2] for scalability, enhanced privacy, and specialized processing—without a separate chain or fragmented state.
