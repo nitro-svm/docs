@@ -32,12 +32,11 @@
         * [get\_blobs\_by\_blober](network-extension-stack/modules/data-anchor/indexing-data/getting-blobs/get_blobs_by_blober.md)
         * [get\_blobs\_by\_payer](network-extension-stack/modules/data-anchor/indexing-data/getting-blobs/get_blobs_by_payer.md)
         * [get\_blobs](network-extension-stack/modules/data-anchor/indexing-data/getting-blobs/get_blobs.md)
-      * [Payers](network-extension-stack/modules/data-anchor/indexing-data/payers/README.md)
-        * [get\_payers\_by\_network](network-extension-stack/modules/data-anchor/indexing-data/payers/get_payers_by_network.md)
+      * [Getting Payers](network-extension-stack/modules/data-anchor/indexing-data/getting-payers/README.md)
+        * [get\_payers\_by\_network](network-extension-stack/modules/data-anchor/indexing-data/getting-payers/get_payers_by_network.md)
       * [Getting Proofs](network-extension-stack/modules/data-anchor/indexing-data/getting-proofs/README.md)
         * [get\_proof\_for\_blob](network-extension-stack/modules/data-anchor/indexing-data/getting-proofs/get_proof_for_blob.md)
         * [get\_proof](network-extension-stack/modules/data-anchor/indexing-data/getting-proofs/get_proof.md)
-    * [Proofs](network-extension-stack/modules/data-anchor/proofs.md)
 * [Rollups](network-extension-stack/rollups.md)
 
 ## Socials
