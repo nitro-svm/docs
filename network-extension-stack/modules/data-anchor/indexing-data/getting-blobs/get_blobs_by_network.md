@@ -1,7 +1,5 @@
 # get\_blobs\_by\_network
 
-
-
 {% openapi-operation spec="get-blobs-by-network" path="/get_blobs_by_network" method="post" %}
 [Broken link](broken-reference)
 {% endopenapi-operation %}
