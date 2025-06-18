@@ -22,7 +22,7 @@ This naming structure allows the indexer to group events by network and namespac
 
 ### RPC Endpoints
 
-<table><thead><tr><th width="175.30859375">Network Configuration</th><th>RPC Endpoint</th></tr></thead><tbody><tr><td><strong>Devnet</strong></td><td><mark style="color:red;"><code>https://devnet.indexer.data-anchor.termina.technology/</code></mark></td></tr><tr><td><strong>Mainnet</strong></td><td><mark style="color:red;"><code>https://mainnet.indexer.data-anchor.termina.technology/</code></mark></td></tr></tbody></table>
+<table><thead><tr><th width="175.30859375">Network Configuration</th><th>RPC Endpoint</th></tr></thead><tbody><tr><td><strong>Devnet</strong></td><td><code>https://devnet.indexer.data-anchor.termina.technology/</code></td></tr><tr><td><strong>Mainnet</strong></td><td><code>https://mainnet.indexer.data-anchor.termina.technology/</code></td></tr></tbody></table>
 
 ### Usage
 
