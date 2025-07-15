@@ -27,11 +27,21 @@ This naming structure allows the indexer to group events by network and namespac
 ### Usage
 
 {% hint style="info" %}
-**Need an API key?** [Reach out](http://t.me/oceanicursula) to the team to get access.
+**API key is optional.** If you need one, [reach out](http://t.me/oceanicursula) to the team to get access.
 {% endhint %}
 
 ```bash
-curl "<INDEXER-URL>" -XPOST \
-    -H 'Content-Type: application/json' \
-    --data '{"jsonrpc":"2.0","id":1,"method":"get_blobs","params":["BAugq2PZwXBCw72YTRe93kgw3X6ghB3HfF7eSYBDhTsK",385430344]}'
+curl "<INDEXER-URL>"
+  -X POST \
+  -H 'Content-Type: application/json' \
+  -H "x-api-key: <YOUR_API_KEY>" \
+  -d '{
+    "jsonrpc": "2.0",
+    "id": "1",
+    "method": "get_blobs",
+    "params": [
+      "BAugq2PZwXBCw72YTRe93kgw3X6ghB3HfF7eSYBDhTsK",
+      385430344
+    ]
+  }'
 ```
