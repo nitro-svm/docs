@@ -79,6 +79,7 @@ let blobs = data_anchor_client
 ```bash
 data-anchor \
     --namespace $NAMESPACE \
+    --indexer-url $INDEXER_URL \
     indexer blobs <SLOT_NUMBER>
 ```
 {% endtab %}
@@ -120,6 +121,7 @@ To filter by time, create a time range tuple using RFC3339 timestamps.
 {% tab title="CLI Utility" %}
 ```bash
 data-anchor \
+    --indexer-url $INDEXER_URL \
     indexer blobs-for-blober \
     --blober <BLOBER_PUBKEY>
     --start "2025-06-01T00:00:00Z" \
@@ -167,6 +169,7 @@ The `payer-pubkey` parameter is optional to show only the blobs uploaded by that
 {% tab title="CLI Utility" %}
 ```bash
 data-anchor \
+    --indexer-url $INDEXER_URL \
     indexer blobs-for-network \
     --network-name <NETWORK_NAME> \
     --start "2025-06-01T00:00:00Z" \
@@ -179,6 +182,7 @@ Use `blobs-for-network` to retrieve all data blobs uploaded across an entire net
 
 ```bash
 data-anchor \
+    --indexer-url $INDEXER_URL \
     indexer blobs-for-namespace \
     --namespace <NAMESPACE> \
     --payer-pubkey <PAYER_PUBKEY> \
@@ -214,6 +218,7 @@ Query all blobs paid for by a specific payer within a given network, with option
 {% tab title="CLI Utility" %}
 ```bash
 data-anchor \
+    --indexer-url $INDEXER_URL \
     indexer blobs-for-payer \
     --blob-payer <PAYER_PUBKEY> \
     --network-name <NETWORK_NAME> \
@@ -254,6 +259,7 @@ Use `get_proof_for_blob` to generate a proof for a specific individual blob when
 ```bash
 data-anchor \
     --namespace $NAMESPACE \
+    --indexer-url $INDEXER_URL \
     indexer proof <SLOT_NUMBER>
 ```
 
@@ -263,6 +269,7 @@ Replace `<SLOT_NUMBER>` with the slot number from your upload output. This gener
 
 ```bash
 data-anchor \
+    --indexer-url $INDEXER_URL \
     indexer proof-for-blob \
     --blob <BLOB_PUBKEY>
 ```
@@ -301,6 +308,7 @@ The SDK returns structured objects with decoded data and metadata. Access your o
 ```bash
 data-anchor \
     --namespace $NAMESPACE \
+    --indexer-url $INDEXER_URL \
     indexer blobs <SLOT_NUMBER>
 ```
 
