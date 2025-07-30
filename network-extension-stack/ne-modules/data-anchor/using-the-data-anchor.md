@@ -63,17 +63,6 @@ solana airdrop 5
 {% endstep %}
 
 {% step %}
-#### Select Blober Program ID
-
-Make sure to use the correct program ID for mainnet and devnet:
-
-| Network        | Program ID                                   |
-| -------------- | -------------------------------------------- |
-| Solana Mainnet | 9i2MEc7s38jLGoEkbFszuTJCL1w3Uorg7qjPjfN8Tv5Z |
-| Solana Devnet  | 2RWsr92iL39YCLiZu7dZ5hron4oexEMbgWDg35v5U5tH |
-{% endstep %}
-
-{% step %}
 #### Create Namespace
 
 A namespace represents a data collection, and only your keypair is allowed to write data to it. To create a sample namespace called `nitro` on Solana devnet:
@@ -99,7 +88,6 @@ let blober_client = BloberClient::builder()
 {% tab title="CLI Utility" %}
 ```bash
 data-anchor \
-    --program-id "2RWsr92iL39YCLiZu7dZ5hron4oexEMbgWDg35v5U5tH" \
     --namespace "nitro" \
     blober initialize
 ```
@@ -110,7 +98,6 @@ If you no longer need the data commitment, close the namespace and reclaim the r
 
 ```bash
 data-anchor \
-    --program-id "2RWsr92iL39YCLiZu7dZ5hron4oexEMbgWDg35v5U5tH" \
     --namespace "nitro" \
     blober close
 ```
@@ -138,7 +125,6 @@ let transaction_outcomes = blober_client
 {% tab title="CLI Utility" %}
 ```bash
 data-anchor \
-    --program-id "2RWsr92iL39YCLiZu7dZ5hron4oexEMbgWDg35v5U5tH" \
     --namespace "nitro" \
     blob upload \
     --data-path "./data.txt"
@@ -147,12 +133,11 @@ data-anchor \
 Alternatively, you can directly pipe the data into the command or pass it in as a hex string via the `--data` param:
 
 ```bash
-cat "./data.txt" | data-anchor --program-id "2RWsr92iL39YCLiZu7dZ5hron4oexEMbgWDg35v5U5tH" --namespace "nitro" blob upload
+cat "./data.txt" | data-anchor --namespace "nitro" blob upload
 ```
 
 ```bash
 data-anchor \
-    --program-id "2RWsr92iL39YCLiZu7dZ5hron4oexEMbgWDg35v5U5tH" \
     --namespace "nitro" \
     blob upload \
     --data "<some-hex-string>"
@@ -191,7 +176,6 @@ let blobs = blober_client
 {% tab title="CLI Utility" %}
 ```bash
 data-anchor \
-    --program-id "2RWsr92iL39YCLiZu7dZ5hron4oexEMbgWDg35v5U5tH" \
     --namespace "nitro" \
     blob fetch 2Vkwid2ZTman9zvGq2Tp7P2S5CUWJ2fsZSQzGzaoFkDMAgS9xNccCvNe7PJuHrXNotsVu3BoJAsRa9jdfbZraXvS faRmYWXPQUDJcFpqffJVE49f5aMSCLYnqp1xH3DZc3SM2Uayc7jReRfR6LjNkFxeuviSJTXMTtSAmAL9tAppwyK 5XsiKe95nk9GmkceXQkEWapAuAcEQFFYEqMfh5kyeszSxjXepSyDbgzEXmzoQniWMdWvv6mVm5Qbyh9e1i8hHF7K 2nk2Fj2xwM7oRfsqbmDBNqYwPCLGxHcGUujBo7napJgavMSWFEQ6C9wYmLCkKcuaetBs89vtMbtYzEKaKLKjasKd 43zzTdgoZBR3sDphuPQTZQHZdT4Ms976bRiY8jguHPZbNPibY3k4EVnrRGKCbUy97i1RzsdMRXkYyv2KJZp9MQZE
 ```
