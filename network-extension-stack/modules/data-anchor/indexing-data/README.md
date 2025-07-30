@@ -158,11 +158,13 @@ Use `get_blobs_by_network` to query all data that users have uploaded across the
 let namespace = "user.network";
 let payer_pubkey = Some(your_payer_pubkey);
 let namespace_blobs = data_anchor_client
-    .get_blobs_by_namespace_for_payer(namespace.into(), time_range)
+    .get_blobs_by_namespace_for_payer(namespace.into(), payer_pubkey, time_range)
     .await?;
 ```
 
-Use `get_blobs_by_namespace_for_payer` for granular filtering by specific users.
+Use `get_blobs_by_namespace_for_payer` for granular filtering by specific users.&#x20;
+
+The `payer-pubkey` parameter is optional to show only the blobs uploaded by that account in the namespace.
 {% endtab %}
 
 {% tab title="CLI Utility" %}
@@ -175,7 +177,7 @@ data-anchor \
     --end "2025-06-30T00:00:00Z"
 ```
 
-Use `blobs-for-network` to retrieve all data blobs uploaded across an entire network within a specified time range.
+Use `blobs-for-network` to retrieve all data blobs uploaded across an entire network, optionally within a specified time range.
 
 
 
@@ -184,11 +186,14 @@ data-anchor \
     --indexer-url $INDEXER_URL \
     indexer blobs-for-namespace \
     --namespace <NAMESPACE> \
+    --payer-pubkey <PAYER_PUBKEY> \
     --start "2025-06-01T00:00:00Z" \
     --end "2025-06-30T00:00:00Z"
 ```
 
 Use `blobs-for-namespace` retrieve all data blobs associated with a specific namespace and optionally within a specified time range.
+
+The `--payer-pubkey` parameter is optional to show only the blobs uploaded by that account in the namespace.
 {% endtab %}
 {% endtabs %}
 {% endstep %}
