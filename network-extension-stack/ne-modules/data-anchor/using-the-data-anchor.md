@@ -200,4 +200,4 @@ If you need the data to be stored for a longer time period than the ledger's lif
 
 To retrieve data from the indexer, all you need to provide is the slot number at which the blob was finalized (You can find this value from the upload command above).
 
-This will produce an output similar to the one from fetching data from the ledger.
+You can follow on the steps in [Indexing Data](https://docs.termina.technology/documentation/network-extension-stack/modules/data-anchor/indexing-data) to walk through an end-to-end guide of different ways to index data you've uploaded.
