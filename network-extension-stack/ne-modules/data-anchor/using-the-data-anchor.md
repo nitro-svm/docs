@@ -31,7 +31,7 @@ data-anchor-client = "0.1.x"
 {% endcode %}
 
 {% hint style="info" %}
-_Note:_ Solana should be installed on your machine and your wallet funded — see the[ installation](https://docs.termina.technology/documentation/network-extension-stack/modules/data-anchor/using-the-data-anchor) and Devnet funding steps.
+_Note:_ Solana should be installed on your machine and your wallet funded — see the[ installation](https://docs.termina.technology/documentation/network-extension-stack/modules/data-anchor/using-the-data-anchor) and [Devnet funding](https://docs.termina.technology/documentation/network-extension-stack/modules/data-anchor/using-the-data-anchor) steps.
 {% endhint %}
 {% endtab %}
 
