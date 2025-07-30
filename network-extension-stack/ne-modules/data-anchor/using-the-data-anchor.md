@@ -16,7 +16,7 @@ If your codebase is in Rust, please use the Rust client. Otherwise, we also prov
 
 {% tabs %}
 {% tab title="Rust SDK" %}
-Install it directly:
+Install the client directly:
 
 <pre class="language-sh"><code class="lang-sh"><strong>cargo add data-anchor-client
 </strong></code></pre>
@@ -29,6 +29,10 @@ Or add the latest version in your Cargo.toml:
 data-anchor-client = "0.1.x"
 ```
 {% endcode %}
+
+{% hint style="info" %}
+_Note:_ Solana should be installed on your machine and your wallet funded — see the[ installation](https://docs.termina.technology/documentation/network-extension-stack/modules/data-anchor/using-the-data-anchor) and Devnet funding steps.
+{% endhint %}
 {% endtab %}
 
 {% tab title="CLI Utility" %}
@@ -46,6 +50,14 @@ curl -sSf https://data-anchor.termina.technology/install.sh | sh
 ```
 
 * Run `data-anchor` to see all the available commands and their options.
+
+{% hint style="info" %}
+_Note:_ Ensure your wallet is funded with sufficient SOL. On Devnet, you can top up by running:
+
+```bash
+solana airdrop 5
+```
+{% endhint %}
 {% endtab %}
 {% endtabs %}
 {% endstep %}
