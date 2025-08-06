@@ -24,6 +24,7 @@
     * [Leveraging the zkSVM](network-extension-stack/ne-modules/zksvm-prover/leveraging-the-zksvm.md)
   * [Data Anchor](network-extension-stack/ne-modules/data-anchor/README.md)
     * [Data Flow](network-extension-stack/ne-modules/data-anchor/data-flow.md)
+    * [Use Cases](network-extension-stack/modules/data-anchor/use-cases.md)
     * [Using the Data Anchor](network-extension-stack/ne-modules/data-anchor/using-the-data-anchor.md)
     * [Indexing Data](network-extension-stack/modules/data-anchor/indexing-data/README.md)
       * [Getting Blobs](network-extension-stack/modules/data-anchor/indexing-data/getting-blobs/README.md)
