@@ -14,6 +14,14 @@ Please reach out if you'd like help in setting up a private endpoint.
 
 If your codebase is in Rust, please use the Rust client. Otherwise, we also provide a command line utility.
 
+{% hint style="info" %}
+_Note:_ Ensure your wallet is funded with sufficient SOL. On devnet, you can top up by requesting an airdrop.
+
+```bash
+solana airdrop 5
+```
+{% endhint %}
+
 {% tabs %}
 {% tab title="Rust SDK" %}
 Install the client directly:
@@ -29,10 +37,6 @@ Or add the latest version in your Cargo.toml:
 data-anchor-client = "0.1.x"
 ```
 {% endcode %}
-
-{% hint style="info" %}
-_Note:_ Solana should be installed on your machine and your wallet funded — see the[ installation](https://docs.termina.technology/documentation/network-extension-stack/modules/data-anchor/using-the-data-anchor) and [Devnet funding](https://docs.termina.technology/documentation/network-extension-stack/modules/data-anchor/using-the-data-anchor) steps.
-{% endhint %}
 {% endtab %}
 
 {% tab title="CLI Utility" %}
@@ -50,14 +54,6 @@ curl -sSf https://data-anchor.termina.technology/install.sh | sh
 ```
 
 * Run `data-anchor` to see all the available commands and their options.
-
-{% hint style="info" %}
-_Note:_ Ensure your wallet is funded with sufficient SOL. On Devnet, you can top up by running:
-
-```bash
-solana airdrop 5
-```
-{% endhint %}
 {% endtab %}
 {% endtabs %}
 {% endstep %}
@@ -188,12 +184,4 @@ This returns hex encoded bytes, so remember to hex decode it to get the data bac
 
 ### Indexer Services
 
-{% hint style="info" %}
-Please reach out if you'd like us to set up an indexer on your behalf.
-{% endhint %}
-
-If you need the data to be stored for a longer time period than the ledger's lifetime of three days, you may want to use an indexer.
-
-To retrieve data from the indexer, all you need to provide is the slot number at which the blob was finalized (You can find this value from the upload command above).
-
-You can follow on the steps in [Indexing Data](https://docs.termina.technology/documentation/network-extension-stack/modules/data-anchor/indexing-data) to walk through an end-to-end guide of different ways to index data you've uploaded.
+If you need the data to be stored for a longer time period than the ledger's lifetime of three days, you may want to use our indexer service. Follow on the steps in [Indexing Data](https://docs.termina.technology/documentation/network-extension-stack/modules/data-anchor/indexing-data) to walk through an end-to-end guide of different ways to index data you've uploaded.
