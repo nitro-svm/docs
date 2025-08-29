@@ -1,11 +1,7 @@
 # Getting Proofs
 
-When your application retrieves data from the indexer, each blob and account change comes with a built-in [data-anchor-proof](https://crates.io/search?q=data-anchor-proofs) you can verify yourself.
+When your application retrieves data from the indexer, each blob and account change comes with a built-in ZK proof that can be verified directly on-chain.
 
-These proofs tie every piece of fetched information back to exactly what happened on-chain, so you never have to take anything on faith.
+These proofs tie every piece of fetched information back to exactly what happened in the ledger history, so no data will ever be taken on faith.
 
-To verify ll you need is a one-time dependency and a few lines of code. Supply the expected on-chain hashes (from standard Solana RPC calls or your trusted source), feed each proof its inputs, and call `verify`.
-
-If any step fails, you’ll immediately know where the mismatch occurred.
-
-<table><thead><tr><th width="224.228515625">RPC Call</th><th>Description</th></tr></thead><tbody><tr><td><a href="https://docs.termina.technology/documentation/network-extension-stack/modules/data-anchor/indexing-data/getting-proofs/get_proof_for_blob"><code>get_proof_for_blob</code></a></td><td>Returns a <code>CompoundProof</code> bundle for one specific blob account.</td></tr><tr><td><a href="https://docs.termina.technology/documentation/network-extension-stack/modules/data-anchor/indexing-data/getting-proofs/get_proof"><code>get_proof</code></a></td><td>Returns a full <code>CompoundProof</code> for every blob in a slot—covering inclusion, bank/slot hashes, etc.</td></tr></tbody></table>
+<table><thead><tr><th width="224.228515625">RPC Call</th><th>Description</th></tr></thead><tbody><tr><td><a href="checkpoint_proof.md">checkpoint_proof</a></td><td>Initiate a ZK proof committing to a series of data blobs.</td></tr><tr><td><a href="get_proof_request_status.md">get_proof_request_status</a></td><td>Returns the current status of the ZK proof generation: created, completed, failed, etc.</td></tr></tbody></table>

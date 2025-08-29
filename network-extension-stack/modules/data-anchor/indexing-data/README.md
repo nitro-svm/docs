@@ -101,8 +101,6 @@ let blobs = data_anchor_client
 
 To query all blobs for the namespace without time restrictions, use `None` for the time range.
 
-
-
 ```rust
 use chrono::{DateTime, Utc};
 
@@ -151,8 +149,6 @@ let network_blobs = data_anchor_client
 
 Use `get_blobs_by_network` to query all data that users have uploaded across the network.
 
-
-
 ```rust
 let namespace = "user.network";
 let payer_pubkey = Some(your_payer_pubkey);
@@ -177,8 +173,6 @@ data-anchor \
 ```
 
 Use `blobs-for-network` to retrieve all data blobs uploaded across an entire network, optionally within a specified time range.
-
-
 
 ```bash
 data-anchor \
@@ -234,25 +228,19 @@ Use `--blob-payer` to specify the payer address and `--network-name` to scope th
 {% step %}
 ### Retrieve Proofs
 
-The indexer provides cryptographic proofs that verify the authenticity of returned data. These proofs ensure data integrity and prove that the indexer hasn't tampered with the original uploads.
+The indexer provides cryptographic proofs that verify the authenticity of returned data. These proofs ensure data integrity and prove that the indexer hasn't tampered with the original uploads. See [getting-proofs](getting-proofs/ "mention") for custom proofs.
 
 {% tabs %}
 {% tab title="Rust SDK" %}
 ```rust
-let slot = your_target_slot;
-let slot_proof = data_anchor_client.get_slot_proof(slot, namespace.into()).await?;
+let proof_type = CustomerElf::DataCorrectness;
+let request_id = data_anchor_client
+    .checkpoint_custom_proof(slot, blober_pda, proof_type)
+    .await?;
+let status = data_anchor_client
+    .get_proof_request_status(request_id)
+    .await?;
 ```
-
-Use `get_slot_proof` to generate a compound proof that verifies all blobs finalized at a specific slot within the namespace. This is efficient for verifying multiple blobs uploaded in the same transaction batch.
-
-
-
-```rust
-let blob_pubkey = your_blob_pubkey;
-let blob_proof = data_anchor_client.get_proof_for_blob(blob_pubkey).await?;
-```
-
-Use `get_proof_for_blob` to generate a proof for a specific individual blob when you need granular verification.
 {% endtab %}
 
 {% tab title="CLI Utility" %}
@@ -260,21 +248,10 @@ Use `get_proof_for_blob` to generate a proof for a specific individual blob when
 data-anchor \
     --namespace $NAMESPACE \
     --indexer-url $INDEXER_URL \
-    indexer proof <SLOT_NUMBER>
+    indexer zk-proof --slot <SLOT_NUMBER> --proof-type data-correctness
 ```
 
-Replace `<SLOT_NUMBER>` with the slot number from your upload output. This generates a compound proof for all blobs that were finalized at that slot.
-
-
-
-```bash
-data-anchor \
-    --indexer-url $INDEXER_URL \
-    indexer proof-for-blob \
-    --blob <BLOB_PUBKEY>
-```
-
-Replace `<BLOB_PUBKEY>` with the public key of the specific blob you want to verify. Individual blob proofs are useful for selective verification of critical data.
+Replace `<SLOT_NUMBER>` with the slot number from your upload output. This generates a ZK proof for all blobs since the last checkpoint.
 {% endtab %}
 {% endtabs %}
 {% endstep %}
