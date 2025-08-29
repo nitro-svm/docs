@@ -20,6 +20,11 @@ For example, in a network called “Cloud Network” where users can run multipl
 
 This naming structure allows the indexer to group events by network and namespace, which allows for more intuitive queries and meaningful insights.
 
+### ZK Proofs
+
+The Data Anchor uses a hashchain mechanism to commit to all ledger data in a verifiable way.\
+To prove the integrity of a given data blob, we generate a fixed-size ZK proof that attests to an arbitrary range of data. This proof is then submitted onchain, where it can be publicly verified. The verification ensures that the onchain commitment exactly matches the original data and that no tampering has occurred.
+
 ### Getting Started
 
 Once you've uploaded data to your blober PDA [using the Data Anchor](https://docs.termina.technology/documentation/network-extension-stack/modules/data-anchor/using-the-data-anchor), you can use the indexer service to query data in an intuitive way beyond the ledger lifetime.
