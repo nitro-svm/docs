@@ -233,7 +233,9 @@ Use `--blob-payer` to specify the payer address and `--network-name` to scope th
 {% step %}
 ### Retrieve Proofs
 
-The indexer provides cryptographic proofs that verify the authenticity of returned data. These proofs ensure data integrity and prove that the indexer hasn't tampered with the original uploads. See [getting-proofs](getting-proofs/ "mention") for custom proofs.
+The indexer provides cryptographic proofs that verify the authenticity of returned data. These proofs ensure data integrity and prove that the indexer hasn't tampered with the original uploads.
+
+A checkpoint PDA needs to be configured with the correct authority in order to accept a ZK proof. The `data-correctness` proof type is the default, but we also support custom types like `pob-sla` for verification of proofs of bandwidth. See [getting-proofs](getting-proofs/ "mention") for custom proofs.
 
 {% tabs %}
 {% tab title="Rust SDK" %}
@@ -253,7 +255,15 @@ let status = data_anchor_client
 data-anchor \
     --namespace $NAMESPACE \
     --indexer-url $INDEXER_URL \
-    indexer zk-proof --slot <SLOT_NUMBER> --proof-type data-correctness
+    blober configure-checkpoint \
+    --authority data-correctness
+
+data-anchor \
+    --namespace $NAMESPACE \
+    --indexer-url $INDEXER_URL \
+    indexer zk-proof \
+    --slot <SLOT_NUMBER> \
+    --proof-type data-correctness
 ```
 
 Replace `<SLOT_NUMBER>` with the slot number from your upload output. This generates a ZK proof for all blobs since the last checkpoint.
