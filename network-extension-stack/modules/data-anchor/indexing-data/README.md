@@ -35,12 +35,12 @@ Once you've uploaded data to your blober PDA [using the Data Anchor](https://doc
 
 Please [reach out](http://t.me/oceanicursula) to the team for an API key to access the indexer's endpoints and use the corresponding URLs for devnet and mainnet.
 
-<table><thead><tr><th width="175.30859375">Network</th><th>RPC Endpoint</th></tr></thead><tbody><tr><td><strong>Devnet</strong></td><td><code>https://devnet.indexer.data-anchor.termina.technology/</code></td></tr><tr><td><strong>Mainnet</strong></td><td><code>https://mainnet.indexer.data-anchor.termina.technology/</code></td></tr></tbody></table>
+<table><thead><tr><th width="175.30859375">Network</th><th>RPC Endpoint</th></tr></thead><tbody><tr><td><strong>Devnet</strong></td><td><code>https://devnet.data-anchor.termina.technology/</code></td></tr><tr><td><strong>Mainnet</strong></td><td><code>https://mainnet.data-anchor.termina.technology/</code></td></tr></tbody></table>
 
 {% tabs %}
 {% tab title="Rust SDK" %}
 ```rust
-let indexer_url = "https://devnet.indexer.data-anchor.termina.technology/";
+let indexer_url = "https://devnet.data-anchor.termina.technology/";
 let data_anchor_client = DataAnchorClient::builder()
     .payer(payer)
     .program_id(program_id)
