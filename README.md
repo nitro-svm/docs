@@ -1,11 +1,27 @@
+---
+description: >-
+  Simulate Solana DeFi strategies with slot-level fidelity to enable realistic
+  backtesting and rapid validation.
+---
+
 # Introduction
 
-Termina is a [**Network Extension**](#user-content-fn-1)[^1] **(NE) platform** that integrates Solana applications with **NE** [**modules**](#user-content-fn-2)[^2] for scalability, enhanced privacy, and specialized processing—without a separate chain or fragmented state.
+### **Why Traditional Backtests Fail on Solana**
 
-The design goal of the platform is to enable performance and customization while preserving liquidity and ensuring a seamless user experience. It's a new way to scale your app within Solana.
+Backtests can be misleading. Most systems rely on mathematical models that assume fixed latency, frictionless fills, and predictable execution. But Solana doesn’t behave that way. Real outcomes depend on slot timing, account locking, compute limits, and network congestion: variables that are difficult to capture with math alone.
 
-<figure><img src=".gitbook/assets/twitter 1500x500.jpg" alt=""><figcaption></figcaption></figure>
+The gap between simulation and execution creates false confidence during strategy validation:
 
-[^1]: A component that adds new capabilities to an existing blockchain without creating a separate network.
+* Math models don’t reflect the nuanced reality of onchain protocols
+* Transaction cost and market impact are underestimated, especially for large or high-frequency trades
+* Iteration cycles are slow and paper trading takes days or weeks to reveal flaws
+* Constant retuning is required to accommodate the volatility of crypto and DeFi
 
-[^2]: **Module** – A plug-in that extends a dApp’s functionality without a new chain.
+As a result, strategies that look profitable in backtests often underperform once deployed on mainnet.
+
+### Get Connected
+
+* [Schedule](https://calendly.com/rustem-awkb/30min) a demo
+* [Request](https://t.me/rustemzzzz) an API key to integrate and run simulations
+
+Our team is quick to respond and should be able to answer questions within a few hours.

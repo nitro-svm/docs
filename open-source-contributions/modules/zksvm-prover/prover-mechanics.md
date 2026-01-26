@@ -4,7 +4,7 @@
 
 To integrate ZKPs into Solana, Termina has the ability to generate proofs for any type of SVM transaction, such as account creation, SPL token transfers, or arbitrary program execution.
 
-There were several issues that had to be resolved to integrate the SVM with a zkVM like SP1. At a high-level, these include:
+Several issues had to be resolved to integrate the SVM with a zkVM like SP1. At a high-level, these include:
 
 1. **Randomness and Time**: Adjusting Solana’s use of time and randomness to remove nondeterminism.
 2. **Threads and Files**: Adapting multithreaded processes and file-based operations to work within the constraints of the zkVM.
@@ -25,6 +25,6 @@ In terms of high-level benchmarks, 100 iterations of a 3-instruction SOL transac
 | Proving Time        | 130s (900s)   | 280s  | 90s        |
 | Dollar Cost         | $0.95 ($0.80) | $0.64 | $0.21      |
 
-On Succinct’s Prover Network, generating a core proof for a block of 100 complex SPL transactions only takes a few minutes and costs less than a dollar. You have the option to prioritize for proving time or dollar cost.
+On Succinct’s Prover Network, generating a core proof for a block of 100 complex SPL transactions only takes a few minutes and costs less than a dollar. Users have the option to prioritize for proving time or dollar cost.
 
-In addition, these values are rapidly changing as both prover hardware and software are making significant leaps in latency and cost.
+These values are rapidly changing as both prover hardware and software are making significant leaps in latency and cost.
