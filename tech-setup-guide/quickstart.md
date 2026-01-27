@@ -63,7 +63,7 @@ Execution order per slot:
 {% endstep %}
 
 {% step %}
-#### 3. Advance Slots
+#### Advance Slots
 
 The simulator starts at `startSlot` and waits for an explicit `continue` before proceeding to subsequent slots.
 
@@ -101,12 +101,12 @@ During a `continue`, the server emits `status` updates (e.g. `decodedTransaction
 {% step %}
 #### Close a Session
 
-<pre class="language-json"><code class="lang-json"><strong>// via websocket to `/backtest/&#x3C;session_id>`
-</strong><strong>{
-</strong>  "method": "closeBacktestSession"
+```json
+// via websocket to `/backtest/<session_id>`
+{
+  "method": "closeBacktestSession"
 }
-
-</code></pre>
+```
 
 This returns a `success` response and removes the session.
 {% endstep %}
@@ -161,3 +161,4 @@ The per-session WebSocket (`/backtest/<session_id>`) supports standard Solana-st
 
 * Use `preloadPrograms` + `status: programAccountsLoaded` if you need deterministic startup before your first `continue`.
 * If you need rapid iteration, use `advanceCount > 1` to fast-forward while still receiving slot notifications.
+* Signature checks are explicitly disabled, so transactions originating from any account can be spoofed.
