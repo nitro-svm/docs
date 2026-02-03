@@ -13,8 +13,8 @@ Start a new simulation session over a slot range.
 
 This method requires an `X-API-Key` to be passed in the header.
 
+{% code title="// via websocket to `ws(s)://<host>/backtest`" %}
 ```json
-// via websocket to `ws(s)://<host>/backtest`
 {
   "method": "createBacktestSession",
   "params": {
@@ -26,6 +26,7 @@ This method requires an `X-API-Key` to be passed in the header.
   }
 }
 ```
+{% endcode %}
 
 The server also emits an initial `slotNotification` for `startSlot`, followed by `readyForContinue` when the session is ready.
 
@@ -71,8 +72,8 @@ The simulator starts at `startSlot` and waits for an explicit `continue` before 
 * `transactions`: custom transactions.
 * `modifyAccountStates`: account overrides applied before execution.
 
+{% code title="// via websocket to `/backtest/<session_id>`" %}
 ```json
-// via websocket to `/backtest/<session_id>`
 {
   "method": "continue",
   "params": {
@@ -94,6 +95,7 @@ The simulator starts at `startSlot` and waits for an explicit `continue` before 
 }
 
 ```
+{% endcode %}
 
 During a `continue`, the server emits `status` updates (e.g. `decodedTransactions`, `appliedAccountModifications`, `executedBlockTransactions`, `programAccountsLoaded`), `slotNotification` events as slots advance, and `readyForContinue` when it is safe to send the next request.
 {% endstep %}
@@ -101,12 +103,13 @@ During a `continue`, the server emits `status` updates (e.g. `decodedTransaction
 {% step %}
 #### Close a Session
 
+{% code title="// via websocket to `/backtest/<session_id>`" %}
 ```json
-// via websocket to `/backtest/<session_id>`
 {
   "method": "closeBacktestSession"
 }
 ```
+{% endcode %}
 
 This returns a `success` response and removes the session.
 {% endstep %}
