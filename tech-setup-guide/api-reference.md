@@ -4,6 +4,9 @@
 
 * **Historical State Archive**
   * Accounts, blocks, and deltas are stored in Parquet for fast deterministic queries.
+* **Available Ranges**
+  * Before creating a session, confirm the slot range of interest is available.
+  * `curl https://<host>/available-ranges | jq`
 * **Replay Environment**
   * A Solana-compatible execution layer that replays historical transactions and applies injected ones.
 * **Session Control (WebSocket)**
