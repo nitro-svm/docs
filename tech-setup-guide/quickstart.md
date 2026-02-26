@@ -2,7 +2,7 @@
 
 {% stepper %}
 {% step %}
-#### Create a Session
+#### Create Session
 
 Start a new simulation session over a slot range.
 
@@ -20,7 +20,6 @@ This method requires an `X-API-Key` to be passed in the header.
   "params": {
     "startSlot": 123456,
     "endSlot": 234567,
-    "accountEvents": ["addr..."],
     "signerFilter": ["addr..."],
     "preloadPrograms": ["addr..."],
   }
@@ -28,7 +27,7 @@ This method requires an `X-API-Key` to be passed in the header.
 ```
 {% endcode %}
 
-The server also emits an initial `slotNotification` for `startSlot`, followed by `readyForContinue` when the session is ready.
+The server also emits an initial `slotNotification` for `startSlot`, followed by `readyForContinue` when the session is ready. Use the returned RPC endpoint for session-specific interactions.
 
 ```json
 {
@@ -42,29 +41,37 @@ The server also emits an initial `slotNotification` for `startSlot`, followed by
 {% endstep %}
 
 {% step %}
+#### Read Accounts
+
+Each session supports standard Solana JSON-RPC methods and subscriptions at `/backtest/<session_id>`, including:
+
+* `getAccountInfo`, `getBalance`, `getMultipleAccounts`
+* `accountSubscribe`, `programSubscribe`, `signatureSubscribe`&#x20;
+
+> See [API Reference](api-reference.md#api-table) for the full list of supported Solana subscription methods.
+{% endstep %}
+
+{% step %}
 #### Send Transactions
 
 There are two supported paths for custom transactions:
 
 * **RPC path:**
-  * Send Solana transactions via `sendTransaction` to `http(s)://<host>/backtest/<session_id>`.
+  * Submit transactions via the standard Solana RPC method `sendTransaction`.
   * These execute immediately in the current slot after the historical block transactions.
 * **WebSocket path:**
   * Include base64-encoded transactions in the `continue` request.
-  * These execute in a batch, and the simulation also advances to the next slot.
-  * See the section below.
+  * These execute in a batch and also trigger the simulation to advance to the next slot.
 
 Execution order per slot:
 
 1. Historical block transactions.
 2. User transactions submitted via RPC `sendTransaction`.
-3. User transactions submitted in the `continue` batch.
-
-> See [API Reference](api-reference.md#api-table) for the full list of supported Solana RPC methods.
+3. User transactions included in the `continue` batch.
 {% endstep %}
 
 {% step %}
-#### Advance Slots
+#### Execute Slots
 
 The simulator starts at `startSlot` and waits for an explicit `continue` before proceeding to subsequent slots.
 
@@ -101,7 +108,7 @@ During a `continue`, the server emits `status` updates (e.g. `decodedTransaction
 {% endstep %}
 
 {% step %}
-#### Close a Session
+#### Close Session
 
 {% code title="// via websocket to `/backtest/<session_id>`" %}
 ```json
@@ -112,51 +119,6 @@ During a `continue`, the server emits `status` updates (e.g. `decodedTransaction
 {% endcode %}
 
 This returns a `success` response and removes the session.
-{% endstep %}
-
-{% step %}
-#### Account Updates
-
-Any account registered in `accountEvents` streams real-time updates during execution.
-
-```json
-{
-  "method": "accountNotification",
-  "params": {
-    "pubkey": "addr...",
-    "result": {
-      "context": { "slot": 123457 },
-      "value": {
-        "data": {
-          "data": "<base64_bytes>",
-          "encoding": "base64"
-        },
-        "executable": false,
-        "lamports": 33594,
-        "owner": "11111111111111111111111111111111",
-        "rentEpoch": 100,
-        "space": 80
-      }
-    }
-  }
-}
-```
-
-`result` is `null` if the account was removed.
-{% endstep %}
-
-{% step %}
-#### Subscriptions
-
-The per-session WebSocket (`/backtest/<session_id>`) supports standard Solana-style subscriptions, including:
-
-* `accountSubscribe`
-* `programSubscribe`
-* `signatureSubscribe`
-* `slotSubscribe`
-* `logsSubscribe`
-
-> See [API Reference](api-reference.md#api-table) for the full list of supported Solana subscription methods.
 {% endstep %}
 {% endstepper %}
 

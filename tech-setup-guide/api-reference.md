@@ -9,18 +9,18 @@
   * `curl https://<host>/available-ranges | jq`
 * **Replay Environment**
   * A Solana-compatible execution layer that replays historical transactions and applies injected ones.
-* **Session Control (WebSocket)**
+* **Session Control Channel**
+  * Connect to create and drive a backtest session. All messages on this channel use a custom JSON protocol.
   * Endpoint: `ws(s)://<host>/backtest`
   * Methods: `createBacktestSession`, `continue`, `closeBacktestSession`
-  * Response events: `sessionCreated`, `readyForContinue`, `slotNotification`, `accountNotification`, `status`, `completed`, `error`
-* **Per-Session RPC (HTTP + WebSocket)**
-  * Endpoint: `http(s)://<host>/backtest/{session_id}`
-  * WebSocket subscriptions: `ws(s)://<host>/backtest/{session_id}`
-  * Supported JSON-RPC methods include:
-    * `getAccountInfo`, `getBalance`, `getMultipleAccounts`, `getProgramAccounts`
-    * `getLatestBlockhash`, `getFeeForMessage`, `getSignatureStatuses`, `getTransaction`
-    * `simulateTransaction`, `sendTransaction`, `getSlot`, `getAddressLookupTable`
-    * `modifyAccounts`
+  * Responses: `sessionCreated`, `readyForContinue`, `slotNotification`, `status`, `completed`, `error`
+* **Per-Session RPC Channel**
+  * Once a session is created, interact with the simulated Solana environment. Most methods conform to the standard Solana JSON-RPC interface.
+  * Endpoint: `http(s)://` or `ws(s)://` at `/backtest/{session_id}`
+  * Account state: `getAccountInfo`, `getBalance`, `getMultipleAccounts`, `getProgramAccounts`
+  * Chain state: `getLatestBlockhash`, `getFeeForMessage`, `getSlot`&#x20;
+  * Transactions: `simulateTransaction`, `sendTransaction`, `getTransaction`
+  * Subscriptions: `accountSubscribe`, `slotSubscribe`, `transactionSubscribe`
 
 > Note: `/backtest` is authenticated by API key in production. `/backtest/{session_id}` is unauthenticated for per-session access.
 
