@@ -13,7 +13,7 @@
   * Connect to create and drive a backtest session. All messages on this channel use a custom JSON protocol.
   * Endpoint: `ws(s)://<host>/backtest`
   * Methods: `createBacktestSession`, `continue`, `closeBacktestSession`
-  * Responses: `sessionCreated`, `readyForContinue`, `slotNotification`, `status` see variants below),  `completed`, `error`
+  * Responses: `sessionCreated`, `readyForContinue`, `slotNotification`, `status` (see variants below),  `completed`, `error`
 * **Session startup**
   * Some sessions can take **2 to 3 minutes** to become ready (for example when the bundle is not already cached). Keep the websocket connection open and wait for status updates.
 * **Status variants**
