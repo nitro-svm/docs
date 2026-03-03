@@ -13,7 +13,20 @@
   * Connect to create and drive a backtest session. All messages on this channel use a custom JSON protocol.
   * Endpoint: `ws(s)://<host>/backtest`
   * Methods: `createBacktestSession`, `continue`, `closeBacktestSession`
-  * Responses: `sessionCreated`, `readyForContinue`, `slotNotification`, `status`, `completed`, `error`
+  * Responses: `sessionCreated`, `readyForContinue`, `slotNotification`, `status` see variants below),  `completed`, `error`
+* **Session startup**
+  * Some sessions can take **2 to 3 minutes** to become ready (for example when the bundle is not already cached). Keep the websocket connection open and wait for status updates.
+* **Status variants**
+  * During startup and execution, the server can produce the following status messages:
+  * `PreparingBundle`
+  * `BundleReady`
+  * `DecodedTransactions`
+  * `AppliedAccountModifications`
+  * `ReadyToExecuteUserTransactions`
+  * `ExecutedUserTransactions`
+  * `ExecutingBlockTransactions`
+  * `ExecutedBlockTransactions`
+  * `ProgramAccountsLoaded`
 * **Per-Session RPC Channel**
   * Once a session is created, interact with the simulated Solana environment. Most methods conform to the standard Solana JSON-RPC interface.
   * Endpoint: `http(s)://` or `ws(s)://` at `/backtest/{session_id}`
@@ -22,7 +35,11 @@
   * Transactions: `simulateTransaction`, `sendTransaction`, `getTransaction`
   * Subscriptions: `accountSubscribe`, `slotSubscribe`, `transactionSubscribe`
 
-> Note: `/backtest` is authenticated by API key in production. `/backtest/{session_id}` is unauthenticated for per-session access.
+> Notes:
+>
+> * &#x20;`/backtest` is authenticated by API key in production. `/backtest/{session_id}` is unauthenticated for per-session access.
+> * `ReadyToExecuteUserTransactions` is the main status typically requires to wait for before sending or executing user transactions.
+> * If your client script does strict parsing, make sure it can handle above mentioned status variants.
 
 #### API Table
 
