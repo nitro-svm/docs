@@ -7,9 +7,11 @@
 Start a new simulation session over a slot range.
 
 * `startSlot` / `endSlot`: simulation range (inclusive).
-* `accountEvents` (optional): stream updates for the listed accounts.
 * `signerFilter` (optional): skip historical transactions signed by these addresses.
 * `preloadPrograms` (optional): preload program accounts before execution.
+* `preloadAccountBundles` (optional): preload account bundles before execution.
+* `sendSummary` (optional): include a summary payload in the stream.
+* `disconnectTimeoutSecs` (optional): keep the session alive for reconnect for this many seconds after disconnect.
 
 This method requires an `X-API-Key` to be passed in the header.
 
@@ -22,6 +24,9 @@ This method requires an `X-API-Key` to be passed in the header.
     "endSlot": 234567,
     "signerFilter": ["addr..."],
     "preloadPrograms": ["addr..."],
+    "preloadAccountBundles": ["bundle-id-1"],
+    "sendSummary": true,
+    "disconnectTimeoutSecs": 30
   }
 }
 ```
@@ -104,7 +109,48 @@ The simulator starts at `startSlot` and waits for an explicit `continue` before 
 ```
 {% endcode %}
 
-During a `continue`, the server emits `status` updates (e.g. `decodedTransactions`, `appliedAccountModifications`, `executedBlockTransactions`, `programAccountsLoaded`), `slotNotification` events as slots advance, and `readyForContinue` when it is safe to send the next request.
+During a `continue`, the server emits `status` updates:
+
+* `preparingBundle`
+* `bundleReady`
+* `startingRuntime`
+* `decodedTransactions`
+* `appliedAccountModifications`
+* `readyToExecuteUserTransactions`
+* `executedUserTransactions`
+* `executingBlockTransactions`
+* `executedBlockTransactions`
+* `programAccountsLoaded`
+
+`slotNotification` events as slots advance, and `readyForContinue` when it is safe to send the next request.
+{% endstep %}
+
+{% step %}
+### Reattach Session
+
+If you disconnect, you can reattach to an existing session within the disconnect timeout window.
+
+```json
+{
+"method": "attachBacktestSession",
+"params": {
+"sessionId": "<session_id>",
+"lastSequence": 42
+}
+}
+```
+
+```json
+{
+  "method": "sessionAttached",
+  "params": {
+    "sessionId": "<session_id>",
+    "rpcEndpoint": "/backtest/<session_id>"
+  }
+}
+```
+
+Note: `lastSequence` is optional. If omitted, the server replays the entire buffered stream.
 {% endstep %}
 
 {% step %}
