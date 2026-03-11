@@ -7,9 +7,8 @@
 Start a new simulation session over a slot range.
 
 * `startSlot` / `endSlot`: simulation range (inclusive).
-* `accountEvents` (optional): stream updates for the listed accounts.
 * `signerFilter` (optional): skip historical transactions signed by these addresses.
-* `preloadPrograms` (optional): preload program accounts before execution.
+* `disconnectTimeoutSecs` (optional): keep the session alive after disconnect (max is 900s).
 
 This method requires an `X-API-Key` to be passed in the header.
 
@@ -21,7 +20,7 @@ This method requires an `X-API-Key` to be passed in the header.
     "startSlot": 123456,
     "endSlot": 234567,
     "signerFilter": ["addr..."],
-    "preloadPrograms": ["addr..."],
+    "disconnectTimeoutSecs": 30
   }
 }
 ```
@@ -38,6 +37,8 @@ The server also emits an initial `slotNotification` for `startSlot`, followed by
   }
 }
 ```
+
+> This WebSocket connection needs to stay open for the duration of the session. If it's closed, the session will be terminated and all account state removed.
 {% endstep %}
 
 {% step %}
@@ -104,7 +105,29 @@ The simulator starts at `startSlot` and waits for an explicit `continue` before 
 ```
 {% endcode %}
 
-During a `continue`, the server emits `status` updates (e.g. `decodedTransactions`, `appliedAccountModifications`, `executedBlockTransactions`, `programAccountsLoaded`), `slotNotification` events as slots advance, and `readyForContinue` when it is safe to send the next request.
+During a `continue`, the server emits `status` updates (e.g. `preparingBundle`, `decodedTransactions`, `appliedAccountModifications`, `executedBlockTransactions`, `programAccountsLoaded`). It'll emit `readyForContinue` when it's ready to advance to the next slot.
+{% endstep %}
+
+{% step %}
+#### Reattach Session <a href="#reattach-session" id="reattach-session"></a>
+
+If the session connection drops by accident, reattach within the recovery window. WebSocket subscription events are buffered for the last 100 slots.
+
+{% code title="// via websocket to `/backtest`" %}
+```json
+{
+  "method": "attachBacktestSession",
+  "params": {
+    "sessionId": "<session_id>",
+    "lastSequence": 42
+  }
+}
+```
+{% endcode %}
+
+Note that `lastSequence` is optional. If omitted, the server replays the entire buffered stream.
+
+
 {% endstep %}
 
 {% step %}
