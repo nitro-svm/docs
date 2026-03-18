@@ -10,12 +10,6 @@ Pre-built binaries are available for Linux and macOS (Apple Silicon):
 curl -fsSL https://cli.simulator.termina.technology/install.sh | bash
 ```
 
-Update to the latest version in place:
-
-```bash
-sim update
-```
-
 All commands that connect to the simulator require an API key. Pass it via the `--api-key` flag or the `SIMULATOR_API_KEY` environment variable:
 
 ```bash
