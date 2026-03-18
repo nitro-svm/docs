@@ -9,6 +9,7 @@
 ## Tech Setup Guide&#x20;
 
 * [Quickstart](tech-setup-guide/quickstart.md)
+* [CLI Client](tech-setup-guide/cli-client.md)
 * [API Reference](tech-setup-guide/api-reference.md)
 
 ## Open Source Contributions
