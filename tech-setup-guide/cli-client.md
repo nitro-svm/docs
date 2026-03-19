@@ -55,28 +55,42 @@ Run a baseline, then re-run with a modified program binary to compare outcomes:
 ```bash
 # Baseline
 sim run \
-  --start-slot 300000000 \
-  --end-slot 300001000 \
+  --start-slot 400000000 \
+  --end-slot 400001000 \
   --program-id <PROGRAM_ID> \
   --output-file baseline.json
 
-# With modified program
+# Experiment
+# If the new program requires higher CUs, bump it up to prevent transaction failures 
 sim run \
-  --start-slot 300000000 \
-  --end-slot 300001000 \
+  --start-slot 400000000 \
+  --end-slot 400001000 \
   --program-id <PROGRAM_ID> \
   --program-so ./target/deploy/program.so \
-  --output-file experiment.json
+  --output-file experiment.json \
+  --extra-compute-units 200
 ```
 
-For large slot ranges, `--parallel` splits the work across up to 10 concurrent sessions:
+For large slot ranges, split the work across concurrent sessions with `--parallel`:
 
 ```bash
 sim run \
-  --start-slot 300000000 \
-  --end-slot 300010000 \
+  --start-slot 400000000 \
+  --end-slot 400010000 \
   --parallel
 ```
+
+To track pre/post account state with each transaction, use `--subscriptions`:
+
+{% code title="" %}
+```bash
+sim run \
+  --start-slot 400000000 \
+  --end-slot 400010000 \
+  --program-id <PROGRAM_ID> \
+  --subscriptions account-diff
+```
+{% endcode %}
 
 #### `sim compare`: Diff Two Simulation Runs
 
@@ -126,15 +140,15 @@ sim update
 ```json
 {
   "metadata": {
-    "start_slot": 300000000,
-    "end_slot": 300001000,
+    "start_slot": 400000000,
+    "end_slot": 400001000,
     "program_id": "<PROGRAM_ID>",
     "session_ids": ["..."],
     "timestamp": "2025-01-15T12:00:00Z"
   },
   "transactions": [
     {
-      "slot": 300000042,
+      "slot": 400000042,
       "signature": "<BASE58_SIG>",
       "success": true,
       "error": null,
