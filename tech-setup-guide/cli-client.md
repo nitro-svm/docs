@@ -104,10 +104,10 @@ sim compare <BASELINE> <EXPERIMENT> [SECTION]
 sim compare baseline.json experiment.json
 
 # Only show what broke:
-sim compare regressions baseline.json experiment.json
+sim compare baseline.json experiment.json regressions
 
 # Check P&L impact:
-sim compare balances baseline.json experiment.json
+sim compare baseline.json experiment.json balances
 ```
 
 #### `sim summarize`: Summarize Simulation Outputs
