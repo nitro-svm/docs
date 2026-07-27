@@ -5,19 +5,21 @@ The `simulator-client` and `simulator-api` crates provide a native Rust interfac
 * **`simulator-client`** is the high-level async client. It wraps the WebSocket protocol with ergonomic builders for common workflows: creating sessions, advancing slots, injecting transactions, and reading account state.
 * **`simulator-api`** defines the raw protocol types (request/response structs, error variants, session parameters). Use it if you need direct access to the wire format or want to implement your own client.
 
+For a complete set of end-to-end examples, see the starter code [repository](https://github.com/nitro-svm/examples).
+
 ### Installation
 
 ```toml
 [dependencies]
-simulator-client = "0.7"
-simulator-api = "0.7" # If you only need the protocol types (e.g. to build a custom client):
+simulator-client = "0.15"
+simulator-api = "0.15" # If you only need the protocol types (e.g. to build a custom client):
 ```
 
 ### Examples
 
 #### Available Slots
 
-Before creating a session, confirm the slot range you want to replay is available:
+Before creating a session, confirm the slot range you want to backtest is available:
 
 ```rust
 let ranges = client.available_ranges().await?;
@@ -109,9 +111,9 @@ let _handle = session
 // Drop the handle to unsubscribe
 ```
 
-#### Session Summaries
+#### Rerouted Order Flow
 
-Enable `send_summary` at session creation to receive transaction-level statistics on completion. The `Completed` response will include a `SessionSummary` with counts of correct simulations, mismatches, balance diffs, and execution errors.
+Enable `reroute_order_flow` at session creation to reroute all taker flow through Jupiter Metis and directly calculate changes to fill rate.
 
 ```rust
 let mut session = client
@@ -119,7 +121,7 @@ let mut session = client
         CreateSession::builder()
             .start_slot(300_000_000)
             .slot_count(100)
-            .send_summary(true)
+            .reroute_order_flow(true)
             .build(),
     )
     .await?;

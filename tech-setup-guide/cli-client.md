@@ -23,6 +23,7 @@ export SIMULATOR_API_KEY=<API_KEY>
 3. **Build a modified program:** `cargo build-sbf` (or equivalent).
 4. **Run with the override:** `sim run` + `--program-so` pointing at the new binary.
 5. **Compare the runs:** `sim compare baseline.json experiment.json` to see regressions, improvements, and balance changes.
+6. **Rerouting historical order flow:** `sim run` + `--reroute-order-flow` to see how historical swaps would have performed if re-routed through Jupiter Metis.
 
 ### Commands
 
@@ -91,6 +92,15 @@ sim run \
   --subscriptions account-diff
 ```
 {% endcode %}
+
+To test if changes to quoting logic will win or lose fills from Jupiter Metis, use `--reroute-order-flow`:
+
+```bash
+sim run \
+  --start-slot 400000000 \
+  --end-slot 400010000 \
+  --reroute-order-flow
+```
 
 #### `sim compare`: Diff Two Simulation Runs
 
