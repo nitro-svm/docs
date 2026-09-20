@@ -1,28 +1,27 @@
 ---
 description: >-
-  Бэктест DeFi-стратегий на реальной истории Solana: точные результаты и быстрая
-  проверка идей.
+  Simulate Solana DeFi strategies with slot-level fidelity to enable realistic
+  backtesting and rapid validation.
 ---
 
-# Введение
+# Introduction
 
-### Почему обычные симуляции не работают на Solana
+### **Why Traditional Simulations Fail on Solana**
 
-Бэктесты могут вводить в заблуждение. Большинство систем опираются на математические модели, которые исходят из того, что задержка всегда одинаковая, ордера исполняются без издержек, а исполнение предсказуемо. На Solana все устроено иначе. Реальный результат зависит от времени слота и загруженности сети. Одной математикой это не учесть.
+Backtests can be misleading. Most systems rely on mathematical models that assume fixed latency, frictionless fills, and predictable execution. But Solana doesn’t behave that way. Real outcomes depend on slot timing, account locking, compute limits, and network congestion: variables that are difficult to capture with math alone.
 
-Из-за разрыва между симуляцией и реальным исполнением стратегия кажется надежнее, чем она есть:
+The gap between simulation and execution creates false confidence during strategy validation:
 
-* Математические модели не отражают, как на самом деле работают ончейн-протоколы
-* Транзакционные издержки и влияние на рынок недооцениваются, особенно для крупных и высокочастотных сделок
-* Итерации идут медленно: на paper trading ошибки проявляются только через дни или недели
-* Модели приходится постоянно перенастраивать под волатильность крипто- и DeFi-рынков
+* Math models don’t reflect the nuanced reality of onchain protocols
+* Transaction cost and market impact are underestimated, especially for large or high-frequency trades
+* Iteration cycles are slow and paper trading takes days or weeks to reveal flaws
+* Constant retuning is required to accommodate the volatility of crypto and DeFi
 
-В итоге стратегии, которые приносят прибыль на бэктесте, в реальнрсти показывают результат хуже ожидаемого.
+As a result, strategies that look profitable in backtests often underperform once deployed on mainnet.
 
-### **Связаться с нами**
+### Get Connected
 
-* [Записаться](https://calendly.com/rustem-awkb/30min) на демо
-* [Запросить](https://t.me/rustemzzzz) API-ключ для интеграции и запуска симуляций
+* [Schedule](https://calendly.com/rustem-awkb/30min) a demo
+* [Request](https://t.me/rustemzzzz) an API key to integrate and run simulations
 
-Наша команда отвечает быстро: обычно в течение нескольких часов.
-
+Our team is quick to respond and should be able to answer questions within a few hours.

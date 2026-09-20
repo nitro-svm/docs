@@ -1,17 +1,17 @@
 # Table of contents
 
-## Что такое Termina
+## Overview
 
-* [Введение](README.md)
-* [Все решает исполнение](chto-takoe-termina/vse-reshaet-ispolnenie.md)
-* [Пример: воспроизведение исторического сценария](chto-takoe-termina/primer-vosproizvedenie-istoricheskogo-scenariya.md)
+* [Introduction](README.md)
+* [Truth in Execution](overview/truth-in-execution.md)
+* [Example: Replaying a Historical Scenario](overview/example-replaying-a-historical-scenario.md)
 
-## Установка и настройка
+## Tech Setup Guide&#x20;
 
-* [С чего начать](ustanovka-i-nastroika/s-chego-nachat.md)
-* [Работа через командную строку](ustanovka-i-nastroika/rabota-cherez-komandnuyu-stroku.md)
-* [Работа из кода на Rust](ustanovka-i-nastroika/rabota-iz-koda-na-rust.md)
-* [API Reference](ustanovka-i-nastroika/api-reference.md)
+* [Quickstart](tech-setup-guide/quickstart.md)
+* [CLI Client](tech-setup-guide/cli-client.md)
+* [Rust Client](tech-setup-guide/rust-client.md)
+* [API Reference](tech-setup-guide/api-reference.md)
 
 ## Open Source Contributions
 
