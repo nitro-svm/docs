@@ -6,8 +6,6 @@ description: >-
 
 # Introduction
 
-Documentation is also available in [Russian](https://docs.termina.technology/documentation/termina-developer-docs-rus/) and [Chinese](https://docs.termina.technology/documentation/termina-developer-docs-cn/)
-
 ### **Why Traditional Simulations Fail on Solana**
 
 Backtests can be misleading. Most systems rely on mathematical models that assume fixed latency, frictionless fills, and predictable execution. But Solana doesn’t behave that way. Real outcomes depend on slot timing, account locking, compute limits, and network congestion: variables that are difficult to capture with math alone.
