@@ -6,7 +6,7 @@ description: >-
 
 # Introduction
 
-Documentation is also available in [Russian](https://docs.termina.technology/documentation/termina-developer-docs-rus/)
+Documentation is also available in [Russian](https://docs.termina.technology/documentation/termina-developer-docs-rus/) and [Chinese](https://docs.termina.technology/documentation/termina-developer-docs-cn/)
 
 ### **Why Traditional Simulations Fail on Solana**
 
