@@ -4,18 +4,22 @@
 
 * [Introduction](README.md)
 * [Truth in Execution](overview/truth-in-execution.md)
-* [Example: Replaying a Historical Scenario](overview/example-replaying-a-historical-scenario.md)
-* [DirectFill Workflow Example](overview/directfill-workflow-example.md)
+* [Installation](overview/installation/README.md)
+  * [Rust Reference](overview/installation/rust-reference.md)
+  * [API Reference](overview/installation/api-reference.md)
+* [Quickstart](overview/quickstart.md)
 
-## Tech Setup Guide&#x20;
+## Flows
 
-* [Quickstart](tech-setup-guide/quickstart.md)
-* [CLI Client](tech-setup-guide/cli-client.md)
-* [Rust Client](tech-setup-guide/rust-client.md)
-* [API Reference](tech-setup-guide/api-reference.md)
+* [Replaying the Market](flows/replaying-the-market.md)
+* [Rerouting Historical Flow](flows/rerouting-historical-flow/README.md)
+  * [Rerouting via an Aggregator](flows/rerouting-historical-flow/rerouting-via-an-aggregator.md)
+  * [Rerouting Directly to a Venue](flows/rerouting-historical-flow/rerouting-directly-to-a-venue.md)
+* [Generating Datasets](flows/generating-datasets/README.md)
+  * [Prebuilt Datasets](flows/generating-datasets/prebuilt-datasets.md)
+  * [Custom Datasets](flows/generating-datasets/custom-datasets.md)
 
 ## Socials
 
 * [Twitter](https://twitter.com/terminaxyz)
-* [Discord](https://discord.gg/Dkgsx9wnbX)
 * [Website](https://www.termina.technology/)

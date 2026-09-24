@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # Quickstart
 
 {% stepper %}
@@ -49,7 +53,7 @@ Each session supports standard Solana JSON-RPC methods and subscriptions at `/ba
 * `getAccountInfo`, `getBalance`, `getMultipleAccounts`
 * `accountSubscribe`, `programSubscribe`, `signatureSubscribe`&#x20;
 
-> See [API Reference](api-reference.md#api-table) for the full list of supported Solana subscription methods.
+> See [API Reference](installation/api-reference.md#api-table) for the full list of supported Solana subscription methods.
 {% endstep %}
 
 {% step %}

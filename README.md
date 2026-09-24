@@ -1,12 +1,6 @@
----
-description: >-
-  Simulate Solana DeFi strategies with slot-level fidelity to enable realistic
-  backtesting and rapid validation.
----
-
 # Introduction
 
-### **Why Traditional Simulations Fail on Solana**
+### **Background**
 
 Backtests can be misleading. Most systems rely on mathematical models that assume fixed latency, frictionless fills, and predictable execution. But Solana doesn’t behave that way. Real outcomes depend on slot timing, account locking, compute limits, and network congestion: variables that are difficult to capture with math alone.
 
@@ -18,6 +12,24 @@ The gap between simulation and execution creates false confidence during strateg
 * Constant retuning is required to accommodate the volatility of crypto and DeFi
 
 As a result, strategies that look profitable in backtests often underperform once deployed on mainnet.
+
+### Summary
+
+Termina’s simulation engine re-executes historical Solana flow to provide a slot-accurate state archive + deterministic execution layer for high-fidelity sims.
+
+This enables:
+
+* Quantify execution outcomes such as slippage, latency effects, and PnL distributions across different network conditions
+* Validate strategy behavior against long historical periods without waiting for live market cycles
+* Replay volatile periods or inject transactions to observe system behavior under stress
+
+### Mental Model
+
+* Pick a historical window
+* Replay it deterministically
+* Change reality
+* Observe the outcome
+* Repeat
 
 ### Get Connected
 
