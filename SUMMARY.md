@@ -5,6 +5,7 @@
 * [Introduction](README.md)
 * [Truth in Execution](overview/truth-in-execution.md)
 * [Example: Replaying a Historical Scenario](overview/example-replaying-a-historical-scenario.md)
+* [DirectFill Workflow Example](overview/directfill-workflow-example.md)
 
 ## Tech Setup Guide&#x20;
 
