@@ -21,5 +21,5 @@
 
 ## Socials
 
-* [Twitter](https://twitter.com/terminaxyz)
+* [X](https://x.com/termina_tech)
 * [Website](https://www.termina.technology/)
