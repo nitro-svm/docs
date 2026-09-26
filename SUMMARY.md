@@ -15,6 +15,7 @@
 * [Rerouting Historical Flow](flows/rerouting-historical-flow/README.md)
   * [Rerouting via an Aggregator](flows/rerouting-historical-flow/rerouting-via-an-aggregator.md)
   * [Rerouting Directly to a Venue](flows/rerouting-historical-flow/rerouting-directly-to-a-venue.md)
+  * [Rerouting to a Brand New Pool](flows/rerouting-historical-flow/rerouting-to-a-brand-new-pool.md)
 * [Generating Datasets](flows/generating-datasets/README.md)
   * [Prebuilt Datasets](flows/generating-datasets/prebuilt-datasets.md)
   * [Custom Datasets](flows/generating-datasets/custom-datasets.md)
