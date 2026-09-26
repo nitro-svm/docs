@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # Rerouting to a Brand New Pool
 
 Test how aggregator would have routed historical order flow if your pool had existed. You inject a pool that doesn't exist on-chain, make it visible to the router, and replay real swaps to see how much flow it would have captured.
