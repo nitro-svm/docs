@@ -3,7 +3,6 @@
 ## Overview
 
 * [Introduction](README.md)
-* [Truth in Execution](overview/truth-in-execution.md)
 * [Installation](overview/installation/README.md)
   * [Rust Reference](overview/installation/rust-reference.md)
   * [API Reference](overview/installation/api-reference.md)
