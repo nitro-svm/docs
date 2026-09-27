@@ -1,4 +1,4 @@
-# Rust Client
+# Rust Reference
 
 The `simulator-client` and `simulator-api` crates provide a native Rust interface to the Termina simulator, for teams who want to integrate backtesting directly into their Rust code rather than using the `sim` CLI.
 
@@ -11,17 +11,24 @@ For a complete set of end-to-end examples, see the starter code [repository](htt
 
 ```toml
 [dependencies]
-simulator-client = "0.15"
-simulator-api = "0.15" # If you only need the protocol types (e.g. to build a custom client):
+simulator-client = "0.23"
+simulator-api = "0.23" # Only if you require protocol types (e.g. to build a custom client)
 ```
 
 ### Examples
 
 #### Available Slots
 
-Before creating a session, confirm the slot range you want to backtest is available:
+Before creating a session, confirm the slot range you want to backtest is available.
 
 ```rust
+use simulator_client::BacktestClient;
+
+let client = BacktestClient::builder()
+    .url("wss://simulator.termina.technology/backtest")
+    .api_key(api_key)
+    .build();
+
 let ranges = client.available_ranges().await?;
 for r in &ranges {
     println!(
@@ -32,32 +39,56 @@ for r in &ranges {
 }
 ```
 
-#### Program Overrides
+#### Session Initialization
 
-Load a compiled ELF binary and patch it into the session.
+Set the slot range and any optional fields in the session creation parameter, then create the session:
+
+* `signer_filter`: skip historical transactions signed by these addresses
+* `actions`: run a pre-scheduled action at every slot or triggered by specific transactions
+* `extra_compute_units`: bump the compute unit cap to prevent transaction failures
+
+...and others in the [full reference](https://docs.rs/simulator-api/0.23.0/simulator_api/struct.CreateSessionParams.html).
 
 ```rust
-let elf = std::fs::read("your_program.so")?;
+use simulator_client::{Continue, CreateSession, ManagedBacktestSession, ManagedEvent};
 
-// Derives the correct ProgramData account shape via the session's RPC endpoint
-let modifications = session
-    .modify_program("YourProgramId111111111111111111111111111111", &elf)
-    .await?;
+let request = CreateSession::builder()
+    .start_slot(300_000_000)
+    .slot_count(100)
+    .build();
+```
 
-// Apply the modifications on the next Continue
-session
-    .continue_until_ready(
-        Continue::builder()
-            .advance_count(1)
-            .modify_accounts(modifications)
-            .build(),
-        None,
-        |_| {},
-    )
-    .await?;
+```rust
+// Use the managed client instead of the raw `BacktestClient`,
+// since it automatically retries if connections are dropped
+let mut session = ManagedBacktestSession::start(
+    "wss://simulator.termina.technology/backtest".to_string(),
+    api_key,
+    request,
+).await?;
+
+loop {
+    // The server emits an initial `slotNotification` for `startSlot`, 
+    // followed by `readyForContinue` when the session is ready
+    match session.next_event().await? {
+        ManagedEvent::ReadyForContinue => {
+            session.send_continue(Continue::builder().build().into_params()).await?;
+        }
+        ManagedEvent::Completed { .. } => break,
+        _ => {}
+    }
+}
+session.shutdown().await;
 ```
 
 #### Reads + Writes
+
+Each session supports standard Solana JSON-RPC methods and subscriptions at `/backtest/<session_id>`, including:
+
+* `getAccountInfo`, `getBalance`, `getMultipleAccounts`
+* `accountSubscribe`, `programSubscribe`, `signatureSubscribe`&#x20;
+
+> See [API Reference](api-reference.md#api-table) for the full list of supported Solana subscription methods.
 
 Use the session's RPC client to send transactions and read accounts.&#x20;
 
@@ -84,7 +115,7 @@ let account = session.rpc().get_account(&pubkey).await?;
 println!("lamports: {}", account.lamports);
 ```
 
-#### Subscriptions
+Or establish a websocket connection to the standard subscription methods.
 
 ```rust
 use solana_commitment_config::CommitmentConfig;
@@ -111,18 +142,95 @@ let _handle = session
 // Drop the handle to unsubscribe
 ```
 
-#### Rerouted Order Flow
+#### Program Overrides
 
-Enable `reroute_order_flow` at session creation to reroute all taker flow through Jupiter Metis and directly calculate changes to fill rate.
+Test new program logic by compiling a new binary and overriding the existing one.
 
 ```rust
-let mut session = client
-    .create_session(
-        CreateSession::builder()
-            .start_slot(300_000_000)
-            .slot_count(100)
-            .reroute_order_flow(true)
+let elf = std::fs::read("your_program.so")?;
+
+// Derives the correct ProgramData account shape via the session's RPC endpoint
+let modifications = session
+    .modify_program("YourProgramId111111111111111111111111111111", &elf)
+    .await?;
+
+// Apply the modifications on the next `Continue`
+session
+    .continue_until_ready(
+        Continue::builder()
+            .advance_count(1)
+            .modify_accounts(modifications)
             .build(),
+        None,
+        |_| {},
     )
     .await?;
 ```
+
+#### Rerouted Order Flow
+
+Reroute historical swaps through Jupiter Metis to see how changes to parameters affect the flow a pool would've captured.
+
+```rust
+use simulator_client::{AccountModifications, CreateSession};
+
+// If needed, inject a pool that doesn't yet exist onchain to test quoting for a new market
+// (The easiest approach is to copy and tweak an existing pool owned by the same program)
+let accounts = AccountModifications(BTreeMap::from([
+    (pool, AccountData {
+        data: EncodedBinary::new(pool_data_b64, BinaryEncoding::Base64),
+        owner: pool_program,
+        lamports: pool_lamports,
+        executable: false,
+        space: pool_data_len,
+    }),
+    (vault_a, /* SPL token account holding inventory */),
+    (vault_b, /* SPL token account holding inventory */),
+]));
+```
+
+{% hint style="warning" %}
+When injecting a new pool, if the program checks relationships between accounts (e.g. vaults derived from the pool and mint), keep those consistent, or swaps through the new pool will fail.
+{% endhint %}
+
+Update the session creation parameters to enable rerouting.
+
+```rust
+use simulator_api::{RerouteAggregators, SwapAggregator};
+
+let all_aggregators = RerouteAggregators::new([
+    SwapAggregator::Jupiter, 
+    SwapAggregator::Okx,
+    SwapAggregator::Dflow,
+    SwapAggregator::Titan,
+]);
+
+let request = CreateSession::builder()
+    .start_slot(START_SLOT)
+    .end_slot(END_SLOT)
+    .reroute_order_flow(true)               // Reroute historical swaps through Jupiter Metis
+    .reroute_aggregators(all_aggregators)   // Filter which aggregators' swaps to reroute
+    .reroute_extra_markets([pool].into())   // Make the router aware of your pool
+    .build()
+    .add_override(START_SLOT, accounts)     // Set your pool existence from the first slot
+    .into_request()?;
+```
+
+#### Summary + Measurements
+
+To get a summary of the reroutes, ubscribe to `replacementSubscribe` notifications. Each rerouted swap includes:
+
+* the route the router chose, hop by hop, with the address of each pool used
+* amounts in and out for each hop
+* the original route and fill onchain, for comparison
+
+```rust
+use simulator_client::reroute_report::{self, Target};
+
+// Identify the venue by its router label, its program ID, or both
+let target = Target::new(None, Some(pool_program));
+let report = reroute_report::from_notifications(target, &notifications)?;
+println!("{}", report.render(None));
+```
+
+The session summary also reports how many swaps were detected, rerouted, simulated and succeeded.

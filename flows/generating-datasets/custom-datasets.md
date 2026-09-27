@@ -49,10 +49,10 @@ status: 9c30e2a3-9145-4d35-917d-03a7c709d076 (onchain, 447458502-447458702) comp
 
 Once the job completes, the dataset is available on S3 using the same [credentials flow](prebuilt-datasets.md#access) as the prebuilt datasets. Custom datasets are scoped to the requesting API key and aren't available to other users.
 {% endstep %}
+{% endstepper %}
 
-{% step %}
+{% hint style="info" %}
 ### Beyond Depth
 
 Datasets aren't limited to depth. The [Rust client](../../overview/installation/rust-reference.md) can probe state and subscribe to account updates during relay, which makes it possible to capture any metric, such as oracle prices, vault balances, or fee accrual.&#x20;
-{% endstep %}
-{% endstepper %}
+{% endhint %}

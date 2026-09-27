@@ -45,12 +45,20 @@ sim run ...
     --reroute-circular-arbs
 ```
 {% endstep %}
+{% endstepper %}
 
-{% step %}
-### Customize Market Conditions&#x20;
+{% hint style="info" %}
+### Customize Conditions
 
 The `sim` CLI client currently only supports changes to the program binary.&#x20;
 
-To test other parameters, like an oracle update's fair value or its position in a block, or the amount of capital that's deployed in the pool vaults, use the [Rust client](../../overview/installation/rust-reference.md). The [public examples](https://github.com/nitro-svm/examples) are a good place to start.
-{% endstep %}
-{% endstepper %}
+
+
+To test other parameters, such as:
+
+* an oracle update's fair value or position in a block
+* a pool vault's deployed capital
+* or to create new pools
+
+use the [Rust client](../../overview/installation/rust-reference.md) and check out the [public examples](https://github.com/nitro-svm/examples).
+{% endhint %}
