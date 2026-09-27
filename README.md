@@ -1,10 +1,12 @@
 # Introduction
 
-### Use Cases
+### Background
 
 In TradFi, a trading strategy gets tested before it touches capital. On Solana DeFi, most desks test in production because historical state is hard to reproduce. A market maker who suspects their spreads are too tight has to widen them live, wait days, and compare PnL, while volume, competitors, and volatility shift underneath. The result is slow and costly, and the outcome is hard to attribute: any change in PnL could come from the spread or the market.
 
 Current backtest methods try to approximate this via price feeds and transaction history, but testing "what would've happened?" requires the exact state of the chain at a past slot and a way to run transactions against it. Solana doesn't provide either natively.
+
+### Use Cases
 
 Termina replays historical Solana slots and can pause the chain at any point within a slot. From there, a transaction can be simulated against that state, with changed balances, parameters, or program code. Offchain aggregators are part of the replay, so routing and quoting also behave the way they did in production.
 
