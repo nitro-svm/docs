@@ -50,11 +50,7 @@ sim run ...
 {% hint style="info" %}
 ### Customize Conditions
 
-The `sim` CLI client currently only supports changes to the program binary.&#x20;
-
-
-
-To test other parameters, such as:
+The `sim` CLI client currently only supports changes to the program binary. To test other parameters, such as:
 
 * an oracle update's fair value or position in a block
 * a pool vault's deployed capital
