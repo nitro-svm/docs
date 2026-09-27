@@ -1,35 +1,22 @@
 # Introduction
 
-### **Background**
+### Use Cases
 
-Backtests can be misleading. Most systems rely on mathematical models that assume fixed latency, frictionless fills, and predictable execution. But Solana doesn’t behave that way. Real outcomes depend on slot timing, account locking, compute limits, and network congestion: variables that are difficult to capture with math alone.
+In TradFi, a trading strategy gets tested before it touches capital. On Solana DeFi, most desks test in production because historical state is hard to reproduce. A market maker who suspects their spreads are too tight has to widen them live, wait days, and compare PnL, while volume, competitors, and volatility shift underneath. The result is slow and costly, and the outcome is hard to attribute: any change in PnL could come from the spread or the market.
 
-The gap between simulation and execution creates false confidence during strategy validation:
+Current backtest methods try to approximate this via price feeds and transaction history, but testing "what would've happened?" requires the exact state of the chain at a past slot and a way to run transactions against it. Solana doesn't provide either natively.
 
-* Math models don’t reflect the nuanced reality of onchain protocols
-* Transaction cost and market impact are underestimated, especially for large or high-frequency trades
-* Iteration cycles are slow and paper trading takes days or weeks to reveal flaws
-* Constant retuning is required to accommodate the volatility of crypto and DeFi
+Termina replays historical Solana slots and can pause the chain at any point within a slot. From there, a transaction can be simulated against that state, with changed balances, parameters, or program code. Offchain aggregators are part of the replay, so routing and quoting also behave the way they did in production.
 
-As a result, strategies that look profitable in backtests often underperform once deployed on mainnet.
+Questions that used to be guesswork can then be measured:
 
-### Summary
+* How much flow would a wider spread or a new curve have won or lost last week?
+* What would the venue have quoted at 10x the size, and where does depth run out?
+* Does a new program version break real mainnet traffic before it goes live?
+* Would a router have won a given trade against competing routes?
+* How fast does a quote decay as latency grows between quote and landing?
 
-Termina’s simulation engine re-executes historical Solana flow to provide a slot-accurate state archive + deterministic execution layer for high-fidelity sims.
-
-This enables:
-
-* Quantify execution outcomes such as slippage, latency effects, and PnL distributions across different network conditions
-* Validate strategy behavior against long historical periods without waiting for live market cycles
-* Replay volatile periods or inject transactions to observe system behavior under stress
-
-### Mental Model
-
-* Pick a historical window
-* Replay it deterministically
-* Change reality
-* Observe the outcome
-* Repeat
+Each of these has a working example with [starter code](https://github.com/nitro-svm/examples).
 
 ### Get Connected
 
