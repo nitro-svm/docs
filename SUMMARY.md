@@ -21,6 +21,19 @@
 * [Generating Datasets](flows/generating-datasets/README.md)
   * [Prebuilt Datasets](flows/generating-datasets/prebuilt-datasets.md)
   * [Custom Datasets](flows/generating-datasets/custom-datasets.md)
+* [Examples](examples.md)
+
+## CLI
+
+* [CLI](cli/README.md)
+  * [CLI Reference](cli/reference.md)
+  * [Output Format](cli/output-format.md)
+  * [File Formats](cli/file-formats.md)
+
+## Help
+
+* [Troubleshooting](troubleshooting.md)
+* [Migration](migration.md)
 
 ## Socials
 
