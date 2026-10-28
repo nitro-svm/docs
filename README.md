@@ -12,13 +12,26 @@ Termina replays historical Solana slots and can pause the chain at any point wit
 
 Questions that used to be guesswork can then be measured:
 
-* How much flow would a wider spread or a new curve have won or lost last week?
-* What would the venue have quoted at 10x the size, and where does depth run out?
-* Does a new program version break real mainnet traffic before it goes live?
-* Would a router have won a given trade against competing routes?
-* How fast does a quote decay as latency grows between quote and landing?
+* How much flow would a wider spread or a new curve have won or lost last week? ([`counterfactual_flow`](https://github.com/nitro-svm/examples/tree/main/src/bin/counterfactual_flow))
+* What would the venue have quoted at 10x the size, and where does depth run out? ([`amm_liquidity`](https://github.com/nitro-svm/examples/tree/main/src/bin/amm_liquidity))
+* Does a new program version break real mainnet traffic before it goes live? ([`regression_test`](https://github.com/nitro-svm/examples/tree/main/src/bin/regression_test))
+* Would a router have won a given trade against competing routes? ([`quote_compare`](https://github.com/nitro-svm/examples/tree/main/src/bin/quote_compare))
+* How fast does a quote decay as latency grows between quote and landing? ([`quote_decay`](https://github.com/nitro-svm/examples/tree/main/src/bin/quote_decay))
 
-Each of these has a working example with [starter code](https://github.com/nitro-svm/examples).
+Each link is a working example. The [Examples](examples.md) page lists them all, with what each one needs.
+
+### How It Works
+
+* A **session** replays a slot range of Solana mainnet on the server. You step it forward block by block, and it pauses between steps.
+* While it's paused, read and change its state through **the session's RPC endpoint**: standard Solana JSON-RPC. Send user transactions, apply account overrides, or swap in a new program binary.
+* The server replays **bundles** of historical blocks: prebuilt bundles cover the past 30 days, and you can build custom bundles for other ranges.
+* With `sim`, one **run** drives one or more sessions over a range and writes the results to a file. Compare a baseline run with an experiment run to see what your change did.
+
+### Get Started
+
+1. [Install](overview/installation/README.md) the CLI or the Rust client.
+2. Run your first session with the [Quickstart](overview/quickstart.md).
+3. Pick a flow: [Replaying the Market](flows/replaying-the-market.md), [Rerouting Historical Flow](flows/rerouting-historical-flow/README.md) or [Generating Datasets](flows/generating-datasets/README.md).
 
 ### Get Connected
 
