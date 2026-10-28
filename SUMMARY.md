@@ -5,7 +5,11 @@
 * [Introduction](README.md)
 * [Installation](overview/installation/README.md)
   * [Rust Reference](overview/installation/rust-reference.md)
-  * [API Reference](overview/installation/api-reference.md)
+  * [API Reference](overview/installation/api-reference/README.md)
+    * [Raw WebSocket Walkthrough](overview/installation/api-reference/raw-websocket-walkthrough.md)
+    * [Session Control Channel](overview/installation/api-reference/session-control-channel.md)
+    * [Session RPC and Subscriptions](overview/installation/api-reference/session-rpc.md)
+    * [HTTP Endpoints](overview/installation/api-reference/http-endpoints.md)
 * [Quickstart](overview/quickstart.md)
 
 ## Flows
